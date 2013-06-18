@@ -359,7 +359,13 @@ augroup vimrc_settings
   function! s:loadvimrc()
 
     function! b:commitvimrc()
-      execute '!git commit -am"'.escape(input("Commit message? "), '\!?').'"'
+      execute 'silent !git commit -am"'.escape(input("Commit message? "), '\!"').'"'
+      redraw!
+      echom "Push? (Y/n) "
+      if nr2char(getchar()) ==# 'Y'
+        execute '!git push'
+      endif
+      redraw!
     endfunction
 
     setlocal nowrap
