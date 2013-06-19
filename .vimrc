@@ -42,6 +42,7 @@ let g:ctrlp_clear_cache_on_exit = 0 " retain cache on exit (might mean I have to
 let g:ctrlp_open_new_file = 't' " <c-y> opens file in new tab
 let g:ctrlp_arg_map = 1 " for <c-z> and <c-o>
 let g:ctrlp_root_markers = ['Gemfile', 'README']
+let g:ctrlp_custom_ignore = 'node_modules|reports'
 " }}}
 
 setglobal rtp+=~/.vim/bundle/vundle
