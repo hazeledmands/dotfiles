@@ -37,13 +37,10 @@ endif
 " Vundle bundles --------------------------------- {{{
 
 " Ctrl-p settings ----------------- {{{
-let g:ctrlp_cmd = 'CtrlPMixed'
-let g:ctrlp_switch_buffer = 2
-let g:ctrlp_reuse_window = 'netrw\|help\|quickfix'
-let g:ctrlp_clear_cache_on_exit = 1 " retain cache on exit (might mean I have to manually refresh every now and again)
+let g:ctrlp_switch_buffer = 'et'
+let g:ctrlp_clear_cache_on_exit = 0 " retain cache on exit (might mean I have to manually refresh every now and again)
 let g:ctrlp_open_new_file = 't' " <c-y> opens file in new tab
-let g:ctrlp_arg_map = 0 " for <c-z> and <c-o>
-let g:ctrlp_extensions = ['tag', 'buffertag', 'quickfix', 'dir', 'rtscript', 'undo', 'line', 'changes', 'mixed', 'bookmarkdir']
+let g:ctrlp_arg_map = 1 " for <c-z> and <c-o>
 let g:ctrlp_root_markers = ['Gemfile', 'README']
 " }}}
 
