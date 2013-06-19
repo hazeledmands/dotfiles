@@ -55,7 +55,6 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'Syntastic'
 Bundle 'tpope/vim-commentary'
-Bundle 'mileszs/ack.vim'
 Bundle 'majutsushi/tagbar'
 Bundle 'tpope/vim-endwise'
 Bundle 'tpope/vim-eunuch'
@@ -104,6 +103,9 @@ setglobal noendofline
 
 " allow mouse input
 setglobal mouse=a
+
+" use ag as search program
+setglobal grepprg=ag
 
 " change tabs to two spaces
 setglobal expandtab
