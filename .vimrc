@@ -85,6 +85,7 @@ setglobal nocompatible
 
 " always show the status line, which is made fancy by powerline
 setglobal laststatus=2
+setglobal statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 
 " don't show the intro message when starting vim
 " also, abbreviate a host of other messages that appear on the status line
@@ -133,7 +134,7 @@ setglobal ruler
 setglobal showcmd
 
 " line numbers (and show/hide them with \n)
-setglobal number
+setglobal nonumber
 
 " wrapping (off and on with \w; scroll off the window border if close and wrap
 " is disabled)
