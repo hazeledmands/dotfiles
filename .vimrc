@@ -243,9 +243,10 @@ inoremap kj <Esc>
 " toggle paste mode
 setglobal pt=<C-q>
 
-" Improving default commands ---- {{{
+" Searching ---- {{{
 nnoremap / /\v
 nnoremap ? ?\v
+nnoremap <leader>g :silent execute "grep! ".shellescape(expand("<cword>"))<cr>:copen 5<cr>:redraw!<cr>
 " }}}
 
 " settings changing -------- {{{
@@ -253,7 +254,7 @@ nnoremap ? ?\v
 noremap \h <Esc>:call ToggleHardMode()<CR>
 noremap \n :setlocal number!<CR>
 noremap \w :setlocal wrap!<CR>
-noremap \s :setlocal nohlsearch<CR>
+noremap \s :setlocal hlsearch!<CR>
 
 " show/hide invisibles and make trailing whitespace ugly as fuck
 noremap \i :setlocal list<CR>:2match Error /\v\s+$/<CR>
