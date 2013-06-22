@@ -1,19 +1,19 @@
-       " /$$                                                   /$$          
-      " | $$                                                  | $$          
+       " /$$                                                   /$$
+      " | $$                                                  | $$
   " /$$$$$$$  /$$$$$$  /$$$$$$/$$$$   /$$$$$$  /$$$$$$$   /$$$$$$$  /$$$$$$$
  " /$$__  $$ /$$__  $$| $$_  $$_  $$ |____  $$| $$__  $$ /$$__  $$ /$$_____/
-" | $$  | $$| $$$$$$$$| $$ \ $$ \ $$  /$$$$$$$| $$  \ $$| $$  | $$|  $$$$$$ 
+" | $$  | $$| $$$$$$$$| $$ \ $$ \ $$  /$$$$$$$| $$  \ $$| $$  | $$|  $$$$$$
 " | $$  | $$| $$_____/| $$ | $$ | $$ /$$__  $$| $$  | $$| $$  | $$ \____  $$
 " |  $$$$$$$|  $$$$$$$| $$ | $$ | $$|  $$$$$$$| $$  | $$|  $$$$$$$ /$$$$$$$/
- " \_______/ \_/$$___/|__/ |__/ |__/ \_______/|__/  |__/ \_______/|_______/ 
-       "      |__/                                                          
-  " /$$    /$$ /$$ /$$$$$$/$$$$   /$$$$$$   /$$$$$$$                        
- " |  $$  /$$/| $$| $$_  $$_  $$ /$$__  $$ /$$_____/                        
-  " \  $$/$$/ | $$| $$ \ $$ \ $$| $$  \__/| $$                              
-   " \  $$$/  | $$| $$ | $$ | $$| $$      | $$                              
- " /$$\  $/   | $$| $$ | $$ | $$| $$      |  $$$$$$$                        
-" |__/ \_/    |__/|__/ |__/ |__/|__/       \_______/                        
-                                                       
+ " \_______/ \_/$$___/|__/ |__/ |__/ \_______/|__/  |__/ \_______/|_______/
+       "      |__/
+  " /$$    /$$ /$$ /$$$$$$/$$$$   /$$$$$$   /$$$$$$$
+ " |  $$  /$$/| $$| $$_  $$_  $$ /$$__  $$ /$$_____/
+  " \  $$/$$/ | $$| $$ \ $$ \ $$| $$  \__/| $$
+   " \  $$$/  | $$| $$ | $$ | $$| $$      | $$
+ " /$$\  $/   | $$| $$ | $$ | $$| $$      |  $$$$$$$
+" |__/ \_/    |__/|__/ |__/ |__/|__/       \_______/
+
 " Vim directories -------------------- {{{
 
 " Create them if they don't exist ---- {{{
@@ -163,7 +163,7 @@ setglobal nostartofline
 setglobal ignorecase " ignore case of searches
 setglobal smartcase " ... but don't ignore case if search has uppercase in it
 setglobal gdefault " adds the global flag to search/replace by default
-setglobal nohlsearch " don't highlight search results
+setglobal hlsearch " don't highlight search results
 setglobal incsearch " highlight dynamically as pattern is typed
 
 " allow cursor beyond last character
@@ -183,10 +183,13 @@ let g:solarized_termcolors = 256
 let g:solarized_termtrans = 1
 colorscheme solarized
 
+" Highlight errors garishly
+highlight Error ctermbg=red ctermfg=white guibg=red guifg=white
+
 " Highlight current line
 setglobal cursorline
-hi cursorline guibg=#333333
-hi CursorColumn guibg=#333333
+highlight cursorline guibg=#333333
+highlight CursorColumn guibg=#333333
 
 " respect modeline in files
 setglobal modeline
@@ -240,17 +243,22 @@ inoremap kj <Esc>
 " toggle paste mode
 setglobal pt=<C-q>
 
+" Improving default commands ---- {{{
+nnoremap / /\v
+nnoremap ? ?\v
+" }}}
 
 " settings changing -------- {{{
 
 noremap \h <Esc>:call ToggleHardMode()<CR>
 noremap \n :setlocal number!<CR>
 noremap \w :setlocal wrap!<CR>
-noremap \s :setlocal hlsearch!<CR>
+noremap \s :setlocal nohlsearch<CR>
 
-" show/hide invisibles
-noremap \i :setlocal list!<CR>
-
+" show/hide invisibles and make trailing whitespace ugly as fuck
+noremap \i :setlocal list<CR>:2match Error /\v\s+$/<CR>
+noremap \I :setlocal nolist<CR>:2match<CR>
+    
 " }}}
 
 " Operator-pending mappings ---- {{{
