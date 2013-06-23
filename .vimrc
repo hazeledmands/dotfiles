@@ -246,7 +246,30 @@ setglobal pt=<C-q>
 " Searching ---- {{{
 nnoremap / /\v
 nnoremap ? ?\v
-nnoremap <leader>g :silent execute "grep! ".shellescape(expand("<cword>"))<cr>:copen 5<cr>:redraw!<cr>
+
+" grep for current operator ---- {{{
+nnoremap <leader>r :set operatorfunc=<SID>GrepOperator<cr>g@
+vnoremap <leader>r :<c-u>call <SID>GrepOperator(visualmode())<cr>
+
+function! s:GrepOperator(type)
+  let saved_unnamed_register = @@
+
+  if a:type ==# 'v'
+    execute "normal! `<v`>y"
+  elseif a:type ==# 'char'
+    execute "normal! `[v`]y"
+  else
+    return
+  endif
+
+  silent! execute "grep! -Q " . shellescape(@@)
+  redraw!
+  copen
+
+  let @@ = saved_unnamed_register
+endfunction
+" }}}
+
 " }}}
 
 " settings changing -------- {{{
