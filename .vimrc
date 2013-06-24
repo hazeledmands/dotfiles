@@ -62,7 +62,6 @@ Bundle 'vim-ruby/vim-ruby'
 Bundle 'sjl/vitality.vim'
 Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'tomtom/tlib_vim'
-Bundle 'garbas/vim-snipmate'
 Bundle 'ervandew/supertab'
 Bundle 'wikitopian/hardmode'
 Bundle 'kana/vim-textobj-user'
@@ -107,8 +106,8 @@ setglobal mouse=a
 setglobal grepprg=ag
 
 " change tabs to two spaces
-setglobal expandtab
-setglobal tabstop=2
+set expandtab
+set tabstop=2
 
 " copy indent from current line when starting a new line
 " additionally, follow smart indentation rules for c-like languages
