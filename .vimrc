@@ -282,6 +282,35 @@ noremap \s :setlocal hlsearch!<CR>
 " show/hide invisibles and make trailing whitespace ugly as fuck
 noremap \i :setlocal list<CR>:2match Error /\v\s+$/<CR>
 noremap \I :setlocal nolist<CR>:2match<CR>
+
+" toggling foldcolumn (\f) -------- {{{
+nnoremap \f :call <sid>FoldColumnToggle()<cr>
+function! s:FoldColumnToggle()
+  if &foldcolumn
+    setlocal foldcolumn=0
+  else
+    setlocal foldcolumn=4
+  endif
+endfunction
+" }}}
+
+" toggling quickfix (\q) -------- {{{
+nnoremap \q :call <sid>QuickFixToggle()<cr>
+let s:quickfix_is_open = 0
+function! s:QuickFixToggle()
+  if s:quickfix_is_open
+    echo "closing"
+    cclose
+    let s:quickfix_is_open = 0
+    execute s:quickfix_return_to_window . "wincmd w"
+  else
+    let s:quickfix_return_to_window = winnr()
+    echo "opening"
+    copen
+    let s:quickfix_is_open = 1
+  endif
+endfunction
+" }}}
     
 " }}}
 
