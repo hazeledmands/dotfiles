@@ -45,7 +45,7 @@ let g:ctrlp_root_markers = ['Gemfile', 'README']
 let g:ctrlp_custom_ignore = 'node_modules\|reports'
 " }}}
 
-setglobal rtp+=~/.vim/bundle/vundle
+setglobal runtimepath+=~/.vim/bundle/vundle
 call vundle#rc()
 Bundle 'gmarik/vundle'
 Bundle 'kien/ctrlp.vim'
