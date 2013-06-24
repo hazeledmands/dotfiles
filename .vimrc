@@ -48,6 +48,7 @@ let g:ctrlp_custom_ignore = 'node_modules\|reports'
 setglobal runtimepath+=~/.vim/bundle/vundle
 call vundle#rc()
 Bundle 'gmarik/vundle'
+Bundle 'demands/vim-potion'
 Bundle 'kien/ctrlp.vim'
 Bundle 'tpope/vim-fugitive'
 Bundle 'altercation/vim-colors-solarized'
