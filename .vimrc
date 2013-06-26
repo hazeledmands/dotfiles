@@ -399,8 +399,8 @@ setglobal equalalways
 " }}}
 
 " move between quickfix errors ------- {{{
-nnoremap <C-j> :cp<CR>
-nnoremap <C-k> :cn<CR>
+nnoremap <C-j> :cprevious<CR>
+nnoremap <C-k> :cnext<CR>
 " }}}
 
 " fugitive mappings ----- {{{
