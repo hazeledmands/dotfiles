@@ -112,44 +112,44 @@ set tabstop=2
 " copy indent from current line when starting a new line
 " additionally, follow smart indentation rules for c-like languages
 " and for other stuff where cinwords is set
-setglobal autoindent
-setglobal smartindent
-setglobal shiftwidth=2
+set autoindent
+set smartindent
+set shiftwidth=2
 
 " indentation in ruby
-setglobal cinoptions=:0,p0,t0
-setglobal cinwords=if,else,while,do,for,switch,case
+set cinoptions=:0,p0,t0
+set cinwords=if,else,while,do,for,switch,case
 
 " enhance command line completion
-setglobal wildignore+=doc*,*.png,*.jpg,*.bmp,*.gif,*.jpeg
-setglobal wildmenu
+set wildignore+=doc*,*.png,*.jpg,*.bmp,*.gif,*.jpeg
+set wildmenu
 
 " show the cursor position
-setglobal ruler
+set ruler
 
 " show the (partial) command as it's being typed
-setglobal showcmd
+set showcmd
 
 " line numbers (and show/hide them with \n)
-setglobal nonumber
+set nonumber
 
 " wrapping (off and on with \w; scroll off the window border if close and wrap
 " is disabled)
-setglobal wrap
-setglobal linebreak
-setglobal sidescroll=1
-setglobal sidescrolloff=20
+set wrap
+set linebreak
+set sidescroll=1
+set sidescrolloff=20
 
 " Start scrolling three lines before the horizontal window border
-setglobal scrolloff=3
+set scrolloff=3
 
 " make backspace delete over line breaks, auto indentation, and the place where insert mode began
-setglobal backspace=2
+set backspace=2
 
 " make last line in a window display as much as possible, even if the whole
 " thing can't display at once.
-setglobal showbreak=⧽
-setglobal display=lastline
+set showbreak=⧽
+set display=lastline
 
 " when switching betwen buffers, always switch to a preexisting window or tab
 " if it's already open
