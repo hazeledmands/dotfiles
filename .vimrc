@@ -242,6 +242,16 @@ inoremap kj <Esc>
 " toggle paste mode
 setglobal pt=<C-q>
 
+" Echo Helpful Information ---- {{{
+
+" show the entire stack of syntax items affecting the current character
+nnoremap \ha :echo join(map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")'), ' => ')<CR>
+
+" show the syntax item that's resulting in the highlighting currently shown
+nnoremap \hn :echo synIDattr(synID(line("."), col("."), 1), "name")<CR>
+
+" }}}
+
 " Searching ---- {{{
 nnoremap / /\v
 nnoremap ? ?\v
@@ -273,10 +283,10 @@ endfunction
 
 " settings changing -------- {{{
 
-noremap \h <Esc>:call ToggleHardMode()<CR>
 noremap \n :setlocal number!<CR>
 noremap \w :setlocal wrap!<CR>
 noremap \s :setlocal hlsearch!<CR>
+noremap \hm <Esc>:call ToggleHardMode()<CR>
 
 " show/hide invisibles and make trailing whitespace ugly as fuck
 noremap \i :setlocal list<CR>:2match Error /\v\s+$/<CR>
