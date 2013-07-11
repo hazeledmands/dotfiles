@@ -383,9 +383,13 @@ noremap <leader>spt :execute 'tabnew' bufname('#')<CR>
 
 " keys to move between windows ------ {{{
 noremap gj <C-w>j
+noremap g<down> <C-w>j
 noremap gk <C-w>k
+noremap g<up> <C-w>k
 noremap gl <C-w>l
+noremap g<left> <C-w>l
 noremap gh <C-w>h
+noremap g<right> <C-w>h
 noremap g= <C-w>=
 " }}}
 
