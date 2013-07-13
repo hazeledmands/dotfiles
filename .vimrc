@@ -226,6 +226,7 @@ augroup END
 " Global key mappings ---- {{{1
 
 let mapleader = ","
+let maplocalleader = "\\"
 
 " Make 'kj' in insert mode bring you back to edit mode
 inoremap kj <Esc>
@@ -269,17 +270,17 @@ endfunction
 
 " settings changing -------- {{{2
 
-noremap \n :setlocal number!<CR>
-noremap \w :setlocal wrap!<CR>
-noremap \s :setlocal hlsearch!<CR>
-noremap \hm <Esc>:call ToggleHardMode()<CR>
+noremap <leader>vn :setlocal number!<CR>
+noremap <leader>vw :setlocal wrap!<CR>
+noremap <leader>vs :setlocal hlsearch!<CR>
+noremap <leader>vh <Esc>:call ToggleHardMode()<CR>
 
 " show/hide invisibles and make trailing whitespace ugly as fuck
-noremap \i :setlocal list<CR>:2match Error /\v\s+$/<CR>
-noremap \I :setlocal nolist<CR>:2match<CR>
+noremap <leader>vi :setlocal list<CR>:2match Error /\v\s+$/<CR>
+noremap <leader>vI :setlocal nolist<CR>:2match<CR>
 
 " toggling foldcolumn (\f) -------- {{{3
-nnoremap \f :call <sid>FoldColumnToggle()<cr>
+nnoremap <leader>vf :call <sid>FoldColumnToggle()<cr>
 function! s:FoldColumnToggle()
   if &foldcolumn
     setlocal foldcolumn=0
@@ -289,7 +290,7 @@ function! s:FoldColumnToggle()
 endfunction
 
 " toggling quickfix (\q) -------- {{{3
-nnoremap \q :call <sid>QuickFixToggle()<cr>
+nnoremap <leader>q :call <sid>QuickFixToggle()<cr>
 let s:quickfix_is_open = 0
 function! s:QuickFixToggle()
   if s:quickfix_is_open
@@ -386,7 +387,7 @@ noremap <Leader>gp :setlocal noconfirm<CR>:Git pull<CR>:bufdo e!<CR>:setlocal co
 noremap <Leader>gP :Git push<CR>
 
 " Edit .vimrc (this file) -------------------- {{{2
-nnoremap \v :split ~/.vimrc<CR>
+nnoremap <leader>vv :split ~/.vimrc<CR>
 augroup vimrc_settings
   autocmd!
 
