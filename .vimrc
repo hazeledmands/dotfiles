@@ -237,10 +237,10 @@ setglobal pt=<C-q>
 " Echo Helpful Information ---- {{{2
 
 " show the entire stack of syntax items affecting the current character
-nnoremap \ha :echo join(map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")'), ' => ')<CR>
+nnoremap <leader>ha :echo join(map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")'), ' => ')<CR>
 
 " show the syntax item that's resulting in the highlighting currently shown
-nnoremap \hn :echo synIDattr(synID(line("."), col("."), 1), "name")<CR>
+nnoremap <leader>hn :echo synIDattr(synID(line("."), col("."), 1), "name")<CR>
 
 " Searching ---- {{{2
 nnoremap / /\v
