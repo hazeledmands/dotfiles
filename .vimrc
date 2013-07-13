@@ -14,15 +14,14 @@
  " /$$\  $/   | $$| $$ | $$ | $$| $$      |  $$$$$$$
 " |__/ \_/    |__/|__/ |__/ |__/|__/       \_______/
 
-" Vim directories -------------------- {{{
+" Vim directories -------------------- {{{1
 
-" Create them if they don't exist ---- {{{
+" Create them if they don't exist ---- {{{2
 silent execute '!mkdir -p $HOME/.vimbackup'
 silent execute '!mkdir -p $HOME/.vimswap'
 silent execute '!mkdir -p $HOME/.vimviews'
-" }}}
 
-" Directories for backups ---- {{{
+" Directories for backups ---- {{{2
 setglobal backup
 setglobal backupdir=$HOME/.vimbackup//
 setglobal directory=$HOME/.vimswap//
@@ -30,21 +29,18 @@ setglobal viewdir=$HOME/.vimviews//
 if exists("&undodir")
   setglobal undodir=$HOME/.vimundo//
 endif
-" }}}
 
-" }}}
+" Vundle bundles --------------------------------- {{{1
 
-" Vundle bundles --------------------------------- {{{
-
-" Ctrl-p settings ----------------- {{{
+" Individual settings ----------------- {{{2
 let g:ctrlp_switch_buffer = 'et'
 let g:ctrlp_clear_cache_on_exit = 0 " retain cache on exit (might mean I have to manually refresh every now and again)
 let g:ctrlp_open_new_file = 't' " <c-y> opens file in new tab
 let g:ctrlp_arg_map = 1 " for <c-z> and <c-o>
 let g:ctrlp_root_markers = ['Gemfile', 'README']
 let g:ctrlp_custom_ignore = 'node_modules\|reports'
-" }}}
 
+" The bundles ------------------------ {{{2
 setglobal runtimepath+=~/.vim/bundle/vundle
 call vundle#rc()
 Bundle 'gmarik/vundle'
@@ -69,9 +65,8 @@ Bundle 'nelstrom/vim-textobj-rubyblock'
 Bundle 'edsono/vim-matchit'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'wavded/vim-stylus'
-" }}}
 
-" Basic settings ---------------------------- {{{
+" Basic settings ---------------------------- {{{1
 
 " Character encoding (if this is not set, all manner of hell breaks loose when
 " LC_CYTPE is set to anything unexpected.)
@@ -216,23 +211,19 @@ let g:syntastic_mode_map = { 'mode': 'passive',
                             \ 'active_filetypes': ['ruby', 'php', 'coffee'],
                             \ 'passive_filetypes': ['html'] }
 
-" hardmode by default -------- {{{
+" hardmode by default -------- {{{2
 " augroup default_hardmode
 "   autocmd!
 "   autocmd VimEnter,BufNewFile,BufReadPost * silent! call HardMode()
 " augroup END
-" }}}
 
-" arrrgh -------- {{{
+" arrrgh -------- {{{2
 augroup arrgh
   autocmd!
   autocmd VimLeave * if v:dying | echo "\nAAAAaaaarrrggghhhh!!!\n" | endif
 augroup END
-" }}}
 
-" }}}
-
-" Global key mappings ---- {{{
+" Global key mappings ---- {{{1
 
 let mapleader = ","
 
@@ -242,7 +233,7 @@ inoremap kj <Esc>
 " toggle paste mode
 setglobal pt=<C-q>
 
-" Echo Helpful Information ---- {{{
+" Echo Helpful Information ---- {{{2
 
 " show the entire stack of syntax items affecting the current character
 nnoremap \ha :echo join(map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")'), ' => ')<CR>
@@ -250,13 +241,11 @@ nnoremap \ha :echo join(map(synstack(line('.'), col('.')), 'synIDattr(v:val, "na
 " show the syntax item that's resulting in the highlighting currently shown
 nnoremap \hn :echo synIDattr(synID(line("."), col("."), 1), "name")<CR>
 
-" }}}
-
-" Searching ---- {{{
+" Searching ---- {{{2
 nnoremap / /\v
 nnoremap ? ?\v
 
-" grep for current operator ---- {{{
+" grep for current operator ---- {{{2
 nnoremap <leader>r :set operatorfunc=<SID>GrepOperator<cr>g@
 vnoremap <leader>r :<c-u>call <SID>GrepOperator(visualmode())<cr>
 
@@ -277,11 +266,8 @@ function! s:GrepOperator(type)
 
   let @@ = saved_unnamed_register
 endfunction
-" }}}
 
-" }}}
-
-" settings changing -------- {{{
+" settings changing -------- {{{2
 
 noremap \n :setlocal number!<CR>
 noremap \w :setlocal wrap!<CR>
@@ -292,7 +278,7 @@ noremap \hm <Esc>:call ToggleHardMode()<CR>
 noremap \i :setlocal list<CR>:2match Error /\v\s+$/<CR>
 noremap \I :setlocal nolist<CR>:2match<CR>
 
-" toggling foldcolumn (\f) -------- {{{
+" toggling foldcolumn (\f) -------- {{{3
 nnoremap \f :call <sid>FoldColumnToggle()<cr>
 function! s:FoldColumnToggle()
   if &foldcolumn
@@ -301,9 +287,8 @@ function! s:FoldColumnToggle()
     setlocal foldcolumn=4
   endif
 endfunction
-" }}}
 
-" toggling quickfix (\q) -------- {{{
+" toggling quickfix (\q) -------- {{{3
 nnoremap \q :call <sid>QuickFixToggle()<cr>
 let s:quickfix_is_open = 0
 function! s:QuickFixToggle()
@@ -317,13 +302,10 @@ function! s:QuickFixToggle()
     let s:quickfix_is_open = 1
   endif
 endfunction
-" }}}
-    
-" }}}
 
-" Operator-pending mappings ---- {{{
+" Operator-pending mappings ---- {{{2
 
-" reference text inside/around the next/last x --- {{{
+" reference text inside/around the next/last x --- {{{3
 onoremap in( :<c-u>normal! f(vi(<cr>
 onoremap il( :<c-u>normal! F)vi(<cr>
 onoremap an( :<c-u>normal! f(va(<cr>
@@ -344,21 +326,16 @@ onoremap in' :<c-u>normal! f'vi'<cr>
 onoremap il' :<c-u>normal! F'vi'<cr>
 onoremap an' :<c-u>normal! f'va'<cr>
 onoremap al' :<c-u>normal! F'va'<cr>
-" }}}
 
-" reference text inside next email address ---- {{{
+" reference text inside next email address ---- {{{3
 " the email is: email@address.biz
 onoremap in@ :<c-u>execute "normal! /\\c\\w\\+@\\w\\+.\\w\\{1,4}\rv/\<Up>/e\r"<cr>
-" }}}
 
-" }}}
+" Window/tab management -------- {{{2
 
-" Window/tab management -------- {{{
+" keys to create new windows ------ {{{3
 
-" keys to create new windows ------ {{{
-
-" duplicate window --- {{{
-
+" duplicate window --- {{{4
 noremap <leader>sl :rightbelow vsplit<CR>
 noremap <leader>sh :leftabove vsplit<CR>
 noremap <leader>sj :rightbelow split<CR>
@@ -367,21 +344,14 @@ noremap <leader>sk :leftabove split<CR>
 noremap <leader>sK :leftabove split<CR>gg
 noremap <leader>st :tabnew<CR>
 
-" }}}
-
-" new window with previous buffer --- {{{
-
+" new window with previous buffer --- {{{4
 noremap <leader>spl :execute 'rightbelow vsplit' bufname('#')<CR>
 noremap <leader>sph :execute 'leftabove vsplit' bufname('#')<CR>
 noremap <leader>spj :execute 'rightbelow split' bufname('#')<CR>
 noremap <leader>spk :execute 'leftabove split' bufname('#')<CR>
 noremap <leader>spt :execute 'tabnew' bufname('#')<CR>
 
-" }}}
-
-" }}}
-
-" keys to move between windows ------ {{{
+" keys to move between windows ------ {{{3
 noremap gj <C-w>j
 noremap g<down> <C-w>j
 noremap gk <C-w>k
@@ -391,40 +361,31 @@ noremap g<left> <C-w>l
 noremap gh <C-w>h
 noremap g<right> <C-w>h
 noremap g= <C-w>=
-" }}}
 
-" keys to move between tabs ---- {{{
+" keys to move between tabs ---- {{{3
 nnoremap <C-h> gT
 nnoremap <C-l> gt
-" }}}
 
-" keys to resize windows ---------- {{{
+" keys to resize windows ---------- {{{3
 noremap + <C-w>+
 noremap _ <C-w>-
 noremap ) <C-w>>
 noremap ( <C-w>>
 setglobal equalalways
-" }}}
 
-
-
-" }}}
-
-" move between quickfix errors ------- {{{
+" move between quickfix errors ------- {{{2
 nnoremap <C-j> :cprevious<CR>
 nnoremap <C-k> :cnext<CR>
-" }}}
 
-" fugitive mappings ----- {{{
+" fugitive mappings ----- {{{2
 noremap <Leader>gg :Gstatus<CR>
 noremap <Leader>gc :Gcommit<CR>
 noremap <Leader>gb :Gblame<CR>
 noremap <Leader>gd :Gdiff<CR>
 noremap <Leader>gp :setlocal noconfirm<CR>:Git pull<CR>:bufdo e!<CR>:setlocal confirm<CR>
 noremap <Leader>gP :Git push<CR>
-" }}}
 
-" Edit .vimrc (this file) -------------------- {{{
+" Edit .vimrc (this file) -------------------- {{{2
 nnoremap \v :split ~/.vimrc<CR>
 augroup vimrc_settings
   autocmd!
@@ -451,33 +412,26 @@ augroup vimrc_settings
   autocmd BufRead ~/.vimrc call s:loadvimrc()
   autocmd BufWritePost ~/.vimrc source ~/.vimrc
 augroup END
-" }}}
 
-" }}}
-
-" Filetype-specific settings -------------- {{{
-" Vimscript --------------------- {{{
+" Filetype-specific settings -------------- {{{1
+" Vimscript --------------------- {{{2
 augroup filetype_vim
   autocmd!
   autocmd FileType vim setlocal foldmethod=marker
 augroup END
-" }}}
 
-" Coffeescript -------------- {{{
+" Coffeescript -------------- {{{2
 augroup filetype_coffee
   autocmd!
   autocmd FileType coffee nnoremap <buffer> <leader>c :CoffeeCompile<CR>
   autocmd FileType coffee vnoremap <buffer> <leader>c :CoffeeCompile<CR>
 augroup END
-" }}}
 
-" Markdown ------------ {{{
+" Markdown ------------ {{{2
 augroup markdown
   autocmd!
   autocmd FileType mkd onoremap <buffer> ih :<c-u>execute "normal! ?^[=-]\\{2,}$\r:nohlsearch\rkvg_"<cr>
   autocmd FileType mkd onoremap <buffer> ah :<c-u>execute "normal! ?^[=-]\\{2,}$\r:nohlsearch\rg_vk0"<cr>
   autocmd FileType mkd setlocal foldlevel=1
 augroup END
-" }}}
-" }}}
 
