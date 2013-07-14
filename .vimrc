@@ -39,6 +39,7 @@ let g:ctrlp_open_new_file = 't' " <c-y> opens file in new tab
 let g:ctrlp_arg_map = 1 " for <c-z> and <c-o>
 let g:ctrlp_root_markers = ['Gemfile', 'README']
 let g:ctrlp_custom_ignore = 'node_modules\|reports'
+let g:potion_command = "/Users/me/projects/potion/potion"
 
 " The bundles ------------------------ {{{2
 setglobal runtimepath+=~/.vim/bundle/vundle
@@ -86,7 +87,7 @@ setglobal shortmess=atIT
 " use exuberant ctags
 let g:tagbar_ctags_bin = '/usr/local/bin/ctags'
 let g:tagbar_compact = 1
-noremap <leader>b :TagbarOpenAutoClose<CR>
+" noremap <leader>b :TagbarOpenAutoClose<CR>
 
 " optimize for fast terminal connections
 setglobal ttyfast
