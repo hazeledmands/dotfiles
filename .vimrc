@@ -376,8 +376,8 @@ noremap ( <C-w>>
 setglobal equalalways
 
 " move between quickfix errors ------- {{{2
-nnoremap <C-j> :cprevious<CR>
-nnoremap <C-k> :cnext<CR>
+nnoremap <C-k> :cprevious<CR>
+nnoremap <C-j> :cnext<CR>
 
 " fugitive mappings ----- {{{2
 noremap <Leader>gg :Gstatus<CR>
