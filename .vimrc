@@ -158,7 +158,7 @@ setglobal nostartofline
 setglobal ignorecase " ignore case of searches
 setglobal smartcase " ... but don't ignore case if search has uppercase in it
 setglobal gdefault " adds the global flag to search/replace by default
-setglobal hlsearch " don't highlight search results
+setglobal nohlsearch " don't highlight search results
 setglobal incsearch " highlight dynamically as pattern is typed
 
 " allow cursor beyond last character
