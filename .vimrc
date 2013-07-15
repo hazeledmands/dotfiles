@@ -64,7 +64,7 @@ Bundle 'wikitopian/hardmode'
 Bundle 'kana/vim-textobj-user'
 Bundle 'nelstrom/vim-textobj-rubyblock'
 Bundle 'edsono/vim-matchit'
-Bundle 'kchmck/vim-coffee-script'
+Bundle 'demands/vim-coffee-script'
 Bundle 'wavded/vim-stylus'
 
 " Basic settings ---------------------------- {{{1
