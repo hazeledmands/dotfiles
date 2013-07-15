@@ -226,9 +226,11 @@ augroup END
 
 " Global key mappings ---- {{{1
 
+" Leader and mapleader keys ---- {{{2
 let mapleader = ","
 let maplocalleader = "\\"
 
+" Insert mode ------ {{{2
 " Make 'kj' in insert mode bring you back to edit mode
 inoremap kj <Esc>
 
