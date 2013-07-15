@@ -238,10 +238,10 @@ setglobal pt=<C-q>
 " Echo Helpful Information ---- {{{2
 
 " show the entire stack of syntax items affecting the current character
-nnoremap <leader>ha :echo join(map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")'), ' => ')<CR>
+nnoremap <leader>ia :echo join(map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")'), ' => ')<CR>
 
 " show the syntax item that's resulting in the highlighting currently shown
-nnoremap <leader>hn :echo synIDattr(synID(line("."), col("."), 1), "name")<CR>
+nnoremap <leader>in :echo synIDattr(synID(line("."), col("."), 1), "name")<CR>
 
 " Searching ---- {{{2
 nnoremap / /\v
@@ -270,18 +270,22 @@ function! s:GrepOperator(type)
 endfunction
 
 " settings changing -------- {{{2
+" local settings ----------- {{{3
+" show/hide line numbers ------------- {{{4
+noremap <localleader>n :setlocal number!<CR>
 
-noremap <leader>vn :setlocal number!<CR>
-noremap <leader>vw :setlocal wrap!<CR>
-noremap <leader>vs :setlocal hlsearch!<CR>
-noremap <leader>vh <Esc>:call ToggleHardMode()<CR>
+" text wrapping ------------- {{{4
+noremap <localleader>w :setlocal wrap!<CR>
 
-" show/hide invisibles and make trailing whitespace ugly as fuck
-noremap <leader>vi :setlocal list<CR>:2match Error /\v\s+$/<CR>
-noremap <leader>vI :setlocal nolist<CR>:2match<CR>
+" show/hide invisibles ------------ {{{4
+noremap <localleader>i :setlocal list!<CR>
 
-" toggling foldcolumn (\f) -------- {{{3
-nnoremap <leader>vf :call <sid>FoldColumnToggle()<cr>
+" hard mode ------------------ {{{4
+noremap <localleader>h <Esc>:call HardMode()<CR>
+noremap <localleader>H <Esc>:call EasyMode()<CR>
+
+" toggling foldcolumn (\f) -------- {{{4
+nnoremap <localleader>vf :call <sid>FoldColumnToggle()<cr>
 function! s:FoldColumnToggle()
   if &foldcolumn
     setlocal foldcolumn=0
@@ -290,7 +294,11 @@ function! s:FoldColumnToggle()
   endif
 endfunction
 
-" toggling quickfix (\q) -------- {{{3
+" global settings ------------------ {{{3
+" highlight search ----------------- {{{4
+noremap <leader>h :set hlsearch!<CR>
+
+" toggling quickfix (\q) -------- {{{4
 nnoremap <leader>q :call <sid>QuickFixToggle()<cr>
 let s:quickfix_is_open = 0
 function! s:QuickFixToggle()
