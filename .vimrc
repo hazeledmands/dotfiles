@@ -66,6 +66,7 @@ Bundle 'nelstrom/vim-textobj-rubyblock'
 Bundle 'edsono/vim-matchit'
 Bundle 'demands/vim-coffee-script'
 Bundle 'wavded/vim-stylus'
+Bundle 'vim-scripts/csv.vim'
 
 " Basic settings ---------------------------- {{{1
 
@@ -266,7 +267,7 @@ function! s:GrepOperator(type)
 
   silent! execute "grep! -Q " . shellescape(@@)
   redraw!
-  copen
+  call s:QuickFixOpen()
 
   let @@ = saved_unnamed_register
 endfunction
@@ -303,15 +304,21 @@ noremap <leader>h :set hlsearch!<CR>
 " toggling quickfix (\q) -------- {{{4
 nnoremap <leader>q :call <sid>QuickFixToggle()<cr>
 let s:quickfix_is_open = 0
-function! s:QuickFixToggle()
-  if s:quickfix_is_open
-    cclose
-    let s:quickfix_is_open = 0
-    execute s:quickfix_return_to_window . "wincmd w"
-  else
+function! s:QuickFixOpen()
     let s:quickfix_return_to_window = winnr()
     copen
     let s:quickfix_is_open = 1
+endfunction
+function! s:QuickFixClose()
+    cclose
+    let s:quickfix_is_open = 0
+    execute s:quickfix_return_to_window . "wincmd w"
+endfunction
+function! s:QuickFixToggle()
+  if s:quickfix_is_open
+    call s:QuickFixClose()
+  else
+    call s:QuickFixOpen()
   endif
 endfunction
 
