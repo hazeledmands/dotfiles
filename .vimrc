@@ -400,7 +400,7 @@ nnoremap <C-j> :cnext<CR>
 noremap <Leader>gg :Gstatus<CR>
 noremap <Leader>gc :Gcommit<CR>
 noremap <Leader>gb :Gblame<CR>
-noremap <Leader>gd :Gdiff<CR>
+noremap <Leader>gd :Gsdiff<CR>
 noremap <Leader>gp :setlocal noconfirm<CR>:Git pull<CR>:bufdo e!<CR>:setlocal confirm<CR>
 noremap <Leader>gP :Git push<CR>
 
