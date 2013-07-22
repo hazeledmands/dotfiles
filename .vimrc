@@ -444,6 +444,7 @@ augroup filetype_coffee
   autocmd!
   autocmd FileType coffee nnoremap <buffer> <leader>c :CoffeeCompile<CR>
   autocmd FileType coffee vnoremap <buffer> <leader>c :CoffeeCompile<CR>
+  setlocal foldlevel=99
 augroup END
 
 " Markdown ------------ {{{2
