@@ -231,6 +231,9 @@ augroup END
 let mapleader = ","
 let maplocalleader = "\\"
 
+" Save as administrator ---- {{{2
+cmap w!! w !sudo tee > /dev/null %
+
 " Insert mode ------ {{{2
 " Make 'kj' in insert mode bring you back to edit mode
 inoremap kj <Esc>
