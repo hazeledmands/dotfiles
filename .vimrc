@@ -225,6 +225,19 @@ augroup arrgh
   autocmd VimLeave * if v:dying | echo "\nAAAAaaaarrrggghhhh!!!\n" | endif
 augroup END
 
+" Custom commands ----------- {{{1
+
+" make arglist all quickfix files
+command! -nargs=0 -bar Qargs execute 'args ' . QuickfixFilenames()
+function! QuickfixFilenames()
+  " Building a hash ensures we get each buffer only once
+  let buffer_numbers = {}
+  for quickfix_item in getqflist()
+    let buffer_numbers[quickfix_item['bufnr']] = bufname(quickfix_item['bufnr'])
+  endfor
+  return join(values(buffer_numbers))
+endfunction
+
 " Global key mappings ---- {{{1
 
 " Leader and mapleader keys ---- {{{2
@@ -467,4 +480,5 @@ augroup markdown
   autocmd FileType mkd onoremap <buffer> ah :<c-u>execute "normal! ?^[=-]\\{2,}$\r:nohlsearch\rg_vk0"<cr>
   autocmd FileType mkd setlocal foldlevel=1
 augroup END
+
 
