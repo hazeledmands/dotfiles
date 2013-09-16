@@ -234,6 +234,10 @@ let maplocalleader = "\\"
 " Save as administrator ---- {{{2
 cmap w!! w !sudo tee > /dev/null %
 
+" System clipboard ---- {{{2
+nnoremap <leader>y "*yy
+vnoremap <leader>y "*y
+
 " Insert mode ------ {{{2
 " Make 'kj' in insert mode bring you back to edit mode
 inoremap kj <Esc>
@@ -387,6 +391,12 @@ noremap g= <C-w>=
 " keys to move between tabs ---- {{{3
 nnoremap <C-h> gT
 nnoremap <C-l> gt
+
+" keys to move between arglist ---- {{{3
+nnoremap gn :next<CR>
+nnoremap gp :previous<CR>
+nnoremap gN :last<CR>
+nnoremap gP :first<CR>
 
 " keys to resize windows ---------- {{{3
 noremap + <C-w>+
