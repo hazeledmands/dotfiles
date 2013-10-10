@@ -247,8 +247,13 @@ let maplocalleader = "\\"
 cmap w!! w !sudo tee > /dev/null %
 
 " System clipboard ---- {{{2
+
+" Yank current line / selection to clipboard ---- {{{3
 nnoremap <leader>y "*yy
 vnoremap <leader>y "*y
+
+" Copy current filename to system clipboard ---- {{{3
+nnoremap <leader>f :let @* = expand("%")<CR>
 
 " Insert mode ------ {{{2
 " Make 'kj' in insert mode bring you back to edit mode
