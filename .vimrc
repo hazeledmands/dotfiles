@@ -102,7 +102,7 @@ setglobal noendofline
 setglobal mouse=a
 
 " use ag as search program
-setglobal grepprg=ag
+setglobal grepprg="ag --skip-vcs-ignores"
 
 " change tabs to two spaces
 set expandtab
