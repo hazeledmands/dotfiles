@@ -66,7 +66,9 @@ Bundle 'nelstrom/vim-textobj-rubyblock'
 Bundle 'edsono/vim-matchit'
 Bundle 'demands/vim-coffee-script'
 Bundle 'wavded/vim-stylus'
-Bundle 'vim-scripts/csv.vim'
+Bundle 'nathanaelkane/vim-indent-guides'
+Bundle 'oinksoft/npm.vim'
+Bundle 'groenewege/vim-less'
 
 " Basic settings ---------------------------- {{{1
 
@@ -235,6 +237,27 @@ function! QuickfixFilenames()
     let buffer_numbers[quickfix_item['bufnr']] = bufname(quickfix_item['bufnr'])
   endfor
   return join(values(buffer_numbers))
+endfunction
+
+" display output of shell command in new buffer
+command! -complete=shellcmd -nargs=+ Shell call s:RunShellCommand(<q-args>)
+function! s:RunShellCommand(cmdline)
+  echo a:cmdline
+  let expanded_cmdline = a:cmdline
+  for part in split(a:cmdline, ' ')
+    if part[0] =~ '\v[%#<]'
+      let expanded_part = fnameescape(expand(part))
+      let expanded_cmdline = substitute(expanded_cmdline, part, expanded_part, '')
+    endif
+  endfor
+  botright new
+  setlocal buftype=nofile bufhidden=wipe nobuflisted noswapfile nowrap
+  call setline(1, "You entered:     " . a:cmdline)
+  call setline(2, "Expanded form:   " . expanded_cmdline)
+  call setline(3, substitute(getline(2),'.','=','g'))
+  execute '$read !'.expanded_cmdline
+  setlocal nomodifiable
+  1
 endfunction
 
 " Global key mappings ---- {{{1
