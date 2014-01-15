@@ -293,9 +293,6 @@ nnoremap <leader>ia :echo join(map(synstack(line('.'), col('.')), 'synIDattr(v:v
 " show the syntax item that's resulting in the highlighting currently shown
 nnoremap <leader>in :echo synIDattr(synID(line("."), col("."), 1), "name")<CR>
 
-" Searching ---- {{{2
-nnoremap / /\v
-nnoremap ? ?\v
 
 " grep for current operator ---- {{{2
 nnoremap <leader>r :set operatorfunc=<SID>GrepOperator<cr>g@
