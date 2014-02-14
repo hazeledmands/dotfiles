@@ -287,6 +287,10 @@ inoremap kj <Esc>
 " toggle paste mode
 setglobal pt=<C-q>
 
+" Visual selection ----- {{{2
+" Make ,V in normal mode highlight the most recently pasted or edited text
+nnoremap ,V `[v`]
+
 " Echo Helpful Information ---- {{{2
 
 " show the entire stack of syntax items affecting the current character
