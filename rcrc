@@ -1,0 +1,2 @@
+DOTFILES_DIRS=~/Projects/dotfiles
+EXCLUDES="*.md"
