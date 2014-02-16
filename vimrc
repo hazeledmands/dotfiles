@@ -42,6 +42,7 @@ if !filereadable(vundle_readme)
   silent execute '!git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle'
   let iCanHazVundle=0
 endif
+let g:loaded_ctrlp = 0
 
 " Individual settings ----------------- {{{2
 let g:ctrlp_switch_buffer = 'et'
@@ -82,6 +83,12 @@ Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'oinksoft/npm.vim'
 Bundle 'groenewege/vim-less'
 Bundle 'tpope/vim-abolish'
+
+" Exit the script if bundles not loaded {{{2
+if !g:loaded_ctrlp
+  echo "Install bundles with BundleInstall, then run vim again to get all the benefits of your custom .vimrc"
+  finish
+endif
 
 " Basic settings ---------------------------- {{{1
 
