@@ -32,6 +32,17 @@ endif
 
 " Vundle bundles --------------------------------- {{{1
 
+" Install vundle if it doesn't already exist ------------ {{{2
+let iCanHazVundle = 1
+let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
+if !filereadable(vundle_readme)
+  echo "Installing vundle..."
+  echo ""
+  silent execute '!mkdir -p $HOME/.vim/bundle'
+  silent execute '!git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle'
+  let iCanHazVundle=0
+endif
+
 " Individual settings ----------------- {{{2
 let g:ctrlp_switch_buffer = 'et'
 let g:ctrlp_clear_cache_on_exit = 0 " retain cache on exit (might mean I have to manually refresh every now and again)
