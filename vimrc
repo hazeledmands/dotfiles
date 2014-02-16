@@ -33,16 +33,13 @@ endif
 " Vundle bundles --------------------------------- {{{1
 
 " Install vundle if it doesn't already exist ------------ {{{2
-let iCanHazVundle = 1
 let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
 if !filereadable(vundle_readme)
   echo "Installing vundle..."
   echo ""
   silent execute '!mkdir -p $HOME/.vim/bundle'
   silent execute '!git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle'
-  let iCanHazVundle=0
 endif
-let g:loaded_ctrlp = 0
 
 " Individual settings ----------------- {{{2
 let g:ctrlp_switch_buffer = 'et'
@@ -85,10 +82,13 @@ Bundle 'groenewege/vim-less'
 Bundle 'tpope/vim-abolish'
 
 " Exit the script if bundles not loaded {{{2
-if !g:loaded_ctrlp
-  echo "Install bundles with BundleInstall, then run vim again to get all the benefits of your custom .vimrc"
-  finish
-endif
+for bundle in g:bundles
+  if !isdirectory(bundle.rtpath)
+    echo "Could not find bundle '" . bundle.name . "' at " . bundle.rtpath . "!"
+    echo "Install bundles with BundleInstall, then run vim again to get all the benefits of your custom .vimrc"
+    finish
+  endif
+endfor
 
 " Basic settings ---------------------------- {{{1
 
