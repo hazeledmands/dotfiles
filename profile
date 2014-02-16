@@ -20,3 +20,6 @@ done
 if [ -f ~/.sekret ]; then
   source ~/.sekret
 fi
+
+# nvm
+source $(brew --prefix nvm)/nvm.sh
