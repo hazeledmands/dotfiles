@@ -1,0 +1,30 @@
+# Editor Droppings #
+####################
+.idea
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+
+# Tag files produced by exuberant ctags #
+#########################################
+TAGS
+!TAGS/
+tags
+!tags/
+
+# nodemon config file
+.nodemonignore
+
+# npm debug files
+npm-debug.log
+
+# agignore files
+.agignore
+
+# tmux config
+.tmux
