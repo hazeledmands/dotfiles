@@ -1,5 +1,5 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 if [ -d ~/Projects/dotfiles ]; then
-  ln -s ~/Projects/dotfiles ~/.dotfiles
+  ln -s $HOME/Projects/dotfiles $HOME/.dotfiles
 fi
