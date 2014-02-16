@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+
+if [ -d ~/Projects/dotfiles ]; then
+  ln -s ~/Projects/dotfiles ~/.dotfiles
+fi
