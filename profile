@@ -21,7 +21,7 @@ done
 # nvm
 source $(brew --prefix nvm)/nvm.sh
 
-# don't want this stuff in version control:
+# don't want this stuff in version control (this is probably a security red flag):
 if [ -f ~/.sekret ]; then
   source ~/.sekret
 fi
