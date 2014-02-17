@@ -18,10 +18,10 @@ do
   source $completion_file
 done
 
+# nvm
+source $(brew --prefix nvm)/nvm.sh
+
 # don't want this stuff in version control:
 if [ -f ~/.sekret ]; then
   source ~/.sekret
 fi
-
-# nvm
-source $(brew --prefix nvm)/nvm.sh
