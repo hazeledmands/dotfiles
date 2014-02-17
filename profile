@@ -21,6 +21,10 @@ done
 # nvm
 source $(brew --prefix nvm)/nvm.sh
 
+# rbenv
+export RBENV_ROOT=/usr/local/var/rbenv
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
 # don't want this stuff in version control (this is probably a security red flag):
 if [ -f ~/.sekret ]; then
   source ~/.sekret
