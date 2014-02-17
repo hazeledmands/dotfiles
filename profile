@@ -1,3 +1,5 @@
+#!/user/bin/env bash
+
 BREW_PREFIX=`brew --prefix`
 
 export PROJECTS="/Users/me/Projects" # where all of my real work lives
