@@ -140,7 +140,7 @@ set cinoptions=:0,p0,t0
 set cinwords=if,else,while,do,for,switch,case
 
 " enhance command line completion
-set wildignore+=doc*,*.png,*.jpg,*.bmp,*.gif,*.jpeg
+set wildignore+=*.png,*.jpg,*.bmp,*.gif,*.jpeg
 set wildmenu
 
 " show the cursor position
