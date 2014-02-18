@@ -1,5 +1,16 @@
 #!/usr/bin/env bash
 
 if [ -d ~/Projects/dotfiles ]; then
-  ln -s $HOME/Projects/dotfiles $HOME/.dotfiles
+  ln -s $HOME/Projects/dotfiles $HOME/.dotfiles 2> /dev/null
 fi
+
+for tap in $(cat $HOME/.dotfiles/hooks/taps); do
+  brew tap $tap 2> /dev/null
+done
+
+for pkg in $(cat $HOME/.dotfiles/hooks/packages); do
+  if ! brew ls $pkg 1> &2 2> /dev/null; then
+    brew install $pkg /dev/null
+  fi
+done
+
