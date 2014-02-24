@@ -6,4 +6,4 @@ fi
 
 source ./hooks/pre-up
 
-rcup
+RCRC=$HOME/.dotfiles/rcrc rcup
