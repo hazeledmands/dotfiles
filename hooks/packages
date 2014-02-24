@@ -5,6 +5,7 @@ ruby-build
 rcm
 reattach-to-user-namespace
 tmux
+mx
 remind
 brew-cask
 sl
