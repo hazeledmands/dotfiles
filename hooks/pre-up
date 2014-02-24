@@ -1,9 +1,5 @@
 #!/usr/bin/env bash
 
-if [ -d $HOME/Projects/dotfiles ]; then
-  ln -s $HOME/Projects/dotfiles $HOME/.dotfiles 2>/dev/null
-fi
-
 for tap in $(cat $HOME/.dotfiles/hooks/taps); do
   brew tap $tap 2>/dev/null
 done
