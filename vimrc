@@ -203,6 +203,17 @@ colorscheme solarized
 " Highlight errors garishly
 highlight Error ctermbg=red ctermfg=white guibg=red guifg=white
 
+" Highlight extra whitespace
+highlight ExtraWhiteSpace ctermbg=green guibg=green
+match ExtraWhiteSpace /\s\+$/
+
+augroup extraWhiteSpace
+  autocmd!
+  autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+  autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+  autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+augroup END
+
 " Highlight current line
 setglobal cursorline
 highlight cursorline guibg=#333333
@@ -519,6 +530,8 @@ augroup filetype_coffee
   autocmd FileType coffee nnoremap <buffer> <leader>c :CoffeeCompile<CR>
   autocmd FileType coffee vnoremap <buffer> <leader>c :CoffeeCompile<CR>
   autocmd FileType coffee setlocal foldlevel=99
+
+  autocmd BufWritePre *.coffee :%s/\s\+$//e " remove all trailing whitespace
 augroup END
 
 " Markdown ------------ {{{2
