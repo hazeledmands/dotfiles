@@ -1,11 +1,13 @@
 #!/usr/bin/env bash
 
+brew_prefix=$(brew --prefix)
+
 for tap in $(cat $HOME/.dotfiles/hooks/taps); do
   brew tap $tap 2>/dev/null
 done
 
 for pkg in $(cat $HOME/.dotfiles/hooks/packages); do
-  if ! [ -d "#(brew --prefix $pkg)" ]; then
+  if ! [ -d "$brew_prefix/opt/$pkg" ]; then
     brew install $pkg 2>/dev/null
   fi
 done
