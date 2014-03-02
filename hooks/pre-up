@@ -12,3 +12,9 @@ for pkg in $(cat $HOME/.dotfiles/hooks/packages); do
   fi
 done
 
+bash_location=/usr/local/bin/bash
+if ! grep -q $bash_location /etc/shells; then
+  echo "Setting $bash_location as default shell..."
+  echo $bash_location | sudo tee -a /etc/shells > /dev/null
+  chsh -s $bash_location
+fi
