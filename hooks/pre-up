@@ -5,7 +5,7 @@ for tap in $(cat $HOME/.dotfiles/hooks/taps); do
 done
 
 for pkg in $(cat $HOME/.dotfiles/hooks/packages); do
-  if ! brew ls $pkg 2>/dev/null 1>&2; then
+  if ! [ -d "#(brew --prefix $pkg)" ]; then
     brew install $pkg 2>/dev/null
   fi
 done
