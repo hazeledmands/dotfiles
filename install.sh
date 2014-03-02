@@ -9,5 +9,6 @@ if [ -d $HOME/Projects/dotfiles ] && ! [ -L $HOME/.dotfiles ]; then
 fi
 
 source ./hooks/pre-up
+source ./hooks/osx_defaults
 
 RCRC=$HOME/.dotfiles/rcrc rcup
