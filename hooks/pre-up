@@ -25,6 +25,10 @@ for cask in $(cat $dotfiles/hooks/casks); do
 done
 brew cask alfred link 2>/dev/null
 
+echo "Updating brew packages and casks..."
+brew update
+brew upgrade
+
 bash_location=/usr/local/bin/bash
 if ! grep -q $bash_location /etc/shells; then
   echo "Setting $bash_location as default shell..."
