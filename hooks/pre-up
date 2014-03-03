@@ -17,6 +17,7 @@ for cask in $(cat $HOME/.dotfiles/hooks/casks); do
     brew cask install $cask
   fi
 done
+brew cask alfred link 2>/dev/null
 
 bash_location=/usr/local/bin/bash
 if ! grep -q $bash_location /etc/shells; then
