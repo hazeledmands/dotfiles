@@ -5,7 +5,8 @@ dotfiles=$HOME/.dotfiles/
 readonly brew_prefix dotfiles
 
 pushd $dotfiles >/dev/null
-git pull >/dev/null
+echo "Updating dotfiles..."
+git pull
 popd >/dev/null
 
 for tap in $(cat $dotfiles/hooks/taps); do
