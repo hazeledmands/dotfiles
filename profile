@@ -2,7 +2,7 @@
 
 BREW_PREFIX=`brew --prefix`
 
-export PROJECTS="/Users/me/Projects" # where all of my real work lives
+export PROJECTS="$HOME/Projects" # where all of my real work lives
 export HOMEBREW_CASK_OPTS="--appdir=/Applications" # link my cask apps to ~/Applications
 export EDITOR="/usr/local/bin/vim" # for maximum compatibility
 export PATH="$BREW_PREFIX/bin:$BREW_PREFIX/sbin:$PATH" # support homebrew binaries
