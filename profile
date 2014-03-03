@@ -12,11 +12,9 @@ alias git="hub"
 alias tmux="tmux -2"
 
 # bash completion for all installed homebrew binaries
-source $BREW_PREFIX/Library/Contributions/brew_bash_completion.sh
-for completion_file in $BREW_PREFIX/etc/bash_completion.d/*
-do
-  source $completion_file
-done
+if [ -f $BREW_PREFIX/etc/bash_completion ]; then
+  source $BREW_PREFIX/etc/bash_completion
+fi
 
 # nvm
 source $(brew --prefix nvm)/nvm.sh
