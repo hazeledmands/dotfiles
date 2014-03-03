@@ -1,18 +1,24 @@
 #!/usr/bin/env bash
 
 brew_prefix=$(brew --prefix)
+dotfiles=$HOME/.dotfiles/
+readonly brew_prefix dotfiles
 
-for tap in $(cat $HOME/.dotfiles/hooks/taps); do
+pushd $dotfiles >/dev/null
+git pull >/dev/null
+popd >/dev/null
+
+for tap in $(cat $dotfiles/hooks/taps); do
   brew tap $tap 2>/dev/null
 done
 
-for pkg in $(cat $HOME/.dotfiles/hooks/packages); do
+for pkg in $(cat $dotfiles/hooks/packages); do
   if ! [ -d "$brew_prefix/opt/$pkg" ]; then
     brew install $pkg 2>/dev/null
   fi
 done
 
-for cask in $(cat $HOME/.dotfiles/hooks/casks); do
+for cask in $(cat $dotfiles/hooks/casks); do
   if ! [ -d "/opt/homebrew-cask/Caskroom/$cask/" ]; then
     brew cask install $cask
   fi
