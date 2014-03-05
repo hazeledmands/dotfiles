@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<root>
+  <item>
+    <name>Double-tap Left Shift for CapsLock</name>
+    <identifier>com.jasonrudolph.double_lshift_to_caps</identifier>
+    <autogen>__DoublePressModifier__ KeyCode::SHIFT_L, KeyCode::SHIFT_L, KeyCode::CAPSLOCK</autogen>
+  </item>
+</root>

@@ -6,6 +6,7 @@ gitsh
 heroku-toolbelt
 hub
 irssi
+mackup
 md5sha1sum
 mutt
 mx
@@ -18,7 +19,7 @@ ruby-build
 sl
 smarter-git-completion
 the_silver_searcher
-tree
 tmux
+tree
 vim
 wget
