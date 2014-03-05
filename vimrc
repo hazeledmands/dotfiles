@@ -481,6 +481,13 @@ setglobal equalalways
 nnoremap <C-k> :cprevious<CR>
 nnoremap <C-j> :cnext<CR>
 
+" tcsh-style (or emacs style) command mode {{{2
+cnoremap <C-A> <Home>
+cnoremap <C-F> <Right>
+cnoremap <C-B> <Left>
+cnoremap <Esc>b <S-Left>
+cnoremap <Esc>f <S-Right>
+
 " fugitive mappings ----- {{{2
 noremap <Leader>gg :Gstatus<CR>
 noremap <Leader>gc :Gcommit<CR>
