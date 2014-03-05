@@ -18,6 +18,7 @@ ruby-build
 sl
 smarter-git-completion
 the_silver_searcher
+tree
 tmux
 vim
 wget
