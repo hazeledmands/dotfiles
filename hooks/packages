@@ -18,6 +18,7 @@ remind
 ruby-build
 sl
 smarter-git-completion
+smarter-tmux-completion
 the_silver_searcher
 tmux
 tree
