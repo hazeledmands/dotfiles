@@ -294,7 +294,7 @@ endfunction
 " Global key mappings ---- {{{1
 
 " Leader and mapleader keys ---- {{{2
-let mapleader = ","
+let mapleader = "\<Space>"
 let maplocalleader = "\\"
 
 " Save as administrator ---- {{{2
