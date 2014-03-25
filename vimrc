@@ -477,6 +477,13 @@ noremap ) <C-w>>
 noremap ( <C-w>>
 setglobal equalalways
 
+" keys to close windows and tabs
+noremap <leader>w :close<CR>
+noremap <leader>W :only<CR>
+
+noremap <leader>t :tabclose<CR>
+noremap <leader>T :tabonly<CR>
+
 " move between quickfix errors ------- {{{2
 nnoremap <C-k> :cprevious<CR>
 nnoremap <C-j> :cnext<CR>
