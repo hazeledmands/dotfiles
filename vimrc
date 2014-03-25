@@ -245,6 +245,10 @@ let g:syntastic_mode_map = { 'mode': 'passive',
                             \ 'active_filetypes': ['ruby', 'php', 'coffee'],
                             \ 'passive_filetypes': ['html'] }
 
+" used when searching for a file with gf or [I
+setglobal suffixesadd=.js,.coffee,.json
+setglobal path=.,node_modules;~,,
+
 " hardmode by default -------- {{{2
 " augroup default_hardmode
 "   autocmd!
