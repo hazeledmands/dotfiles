@@ -1,6 +1,6 @@
 [user]
+	email = me@maxedmands.com
 	name = Max Edmands
-	email = max@goodeggs.com
 [core]
 	excludesfile = /Users/me/.gitignore_global
 	pager = less -FXRS -x2
