@@ -43,12 +43,10 @@ endif
 
 " Individual settings ----------------- {{{2
 let g:ctrlp_switch_buffer = 'et'
-let g:ctrlp_clear_cache_on_exit = 0 " retain cache on exit (might mean I have to manually refresh every now and again)
 let g:ctrlp_open_new_file = 't' " <c-y> opens file in new tab
 let g:ctrlp_arg_map = 1 " for <c-z> and <c-o>
-let g:ctrlp_root_markers = ['Gemfile', 'README']
-let g:ctrlp_custom_ignore = 'node_modules\|reports'
-let g:ctrlp_user_command = 'git ls-files -co -X .gitignore %s'
+let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+let g:ctrlp_use_caching = 0
 let g:potion_command = "/Users/me/projects/potion/potion"
 
 " The bundles ------------------------ {{{2
