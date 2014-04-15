@@ -56,6 +56,7 @@ Bundle 'gmarik/vundle'
 Bundle 'demands/vim-potion'
 Bundle 'kien/ctrlp.vim'
 Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-vinegar'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'Syntastic'
 Bundle 'tpope/vim-commentary'
@@ -472,14 +473,8 @@ nnoremap gp :previous<CR>
 nnoremap gN :last<CR>
 nnoremap gP :first<CR>
 
-" keys to resize windows ---------- {{{3
-noremap + <C-w>+
-noremap _ <C-w>-
-noremap ) <C-w>>
-noremap ( <C-w>>
-setglobal equalalways
 
-" keys to close windows and tabs
+" keys to close windows and tabs ---- {{{3
 noremap <leader>w :close<CR>
 noremap <leader>W :only<CR>
 
