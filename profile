@@ -2,12 +2,6 @@
 
 BREW_PREFIX=`brew --prefix`
 
-export PROJECTS="$HOME/Projects" # where all of my real work lives
-export HOMEBREW_CASK_OPTS="--appdir=/Applications" # link my cask apps to ~/Applications
-export EDITOR="/usr/local/bin/vim" # for maximum compatibility
-export PATH="$BREW_PREFIX/bin:$BREW_PREFIX/sbin:$PATH" # support homebrew binaries
-export MANPATH="$BREW_PREFIX/share/man:$MANPATH"
-
 alias q="exit"
 alias git="hub"
 alias tmux="tmux -2"
@@ -20,6 +14,7 @@ fi
 # nvm
 source $(brew --prefix nvm)/nvm.sh
 
+
 # rbenv
 export RBENV_ROOT=/usr/local/var/rbenv
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
@@ -28,3 +23,9 @@ if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 if [ -f ~/.sekret ]; then
   source ~/.sekret
 fi
+
+export PROJECTS="$HOME/Projects" # where all of my real work lives
+export HOMEBREW_CASK_OPTS="--appdir=/Applications" # link my cask apps to ~/Applications
+export EDITOR="/usr/local/bin/vim" # for maximum compatibility
+export PATH="$BREW_PREFIX/bin:$BREW_PREFIX/sbin:$PATH" # support homebrew binaries
+export MANPATH="$BREW_PREFIX/share/man:$MANPATH"
