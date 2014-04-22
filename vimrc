@@ -79,6 +79,7 @@ Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'oinksoft/npm.vim'
 Bundle 'groenewege/vim-less'
 Bundle 'tpope/vim-abolish'
+Bundle 'suan/vim-instant-markdown'
 
 " Exit the script if bundles not loaded {{{2
 for bundle in g:bundles
