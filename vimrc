@@ -80,6 +80,7 @@ Bundle 'oinksoft/npm.vim'
 Bundle 'groenewege/vim-less'
 Bundle 'tpope/vim-abolish'
 Bundle 'suan/vim-instant-markdown'
+Bundle 'benmills/vimux'
 
 " Exit the script if bundles not loaded {{{2
 for bundle in g:bundles
@@ -528,6 +529,16 @@ augroup vimrc_settings
   autocmd BufRead ~/.vimrc call s:loadvimrc()
   autocmd BufWritePost ~/.vimrc source ~/.vimrc
 augroup END
+
+" vmux bindings ------------- {{{2
+
+map <Leader>vp :VimuxPromptCommand<CR>
+map <Leader>vl :VimuxRunLastCommand<CR>
+map <Leader>vi :VimuxInspectRunner<CR>
+map <Leader>vq :VimuxCloseRunner<CR>
+map <Leader>vs :VimuxInterruptRunner<CR>
+map <Leader>vc :VimuxClearRunnerHistory<CR>
+map <Leader>vz :VimuxZoomRunner<CR>
 
 " Filetype-specific settings -------------- {{{1
 " Vimscript --------------------- {{{2
