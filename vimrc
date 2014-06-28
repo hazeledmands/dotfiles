@@ -81,6 +81,7 @@ Bundle 'groenewege/vim-less'
 Bundle 'tpope/vim-abolish'
 Bundle 'suan/vim-instant-markdown'
 Bundle 'benmills/vimux'
+Bundle 'moll/vim-node'
 
 " Exit the script if bundles not loaded {{{2
 for bundle in g:bundles
