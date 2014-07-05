@@ -548,6 +548,12 @@ augroup filetype_vim
   autocmd FileType vim setlocal foldmethod=marker
 augroup END
 
+augroup filetype_css
+  autocmd!
+  autocmd FileType css setlocal foldmethod=expr
+  autocmd FileType css set foldexpr=getline(v:lnum)=~'@group'?'a1':getline(v:lnum)=~'@end'?'s1':'='
+augroup END
+
 " Coffeescript -------------- {{{2
 augroup filetype_coffee
   autocmd!
