@@ -28,3 +28,6 @@ npm-debug.log
 
 # tmux config
 .tmux
+
+# emacs bullshit
+\#*\#
