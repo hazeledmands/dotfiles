@@ -494,6 +494,7 @@ cnoremap <C-F> <Right>
 cnoremap <C-B> <Left>
 cnoremap <Esc>b <S-Left>
 cnoremap <Esc>f <S-Right>
+cnoremap <Esc><BS> <C-W>
 
 " fugitive mappings ----- {{{2
 noremap <Leader>gg :Gstatus<CR>
