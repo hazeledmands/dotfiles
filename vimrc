@@ -30,67 +30,69 @@ if exists("&undodir")
   setglobal undodir=$HOME/.vimundo//
 endif
 
-" Vundle bundles --------------------------------- {{{1
-
-" Install vundle if it doesn't already exist ------------ {{{2
-let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
-if !filereadable(vundle_readme)
-  echo "Installing vundle..."
-  echo ""
-  silent execute '!mkdir -p $HOME/.vim/bundle'
-  silent execute '!git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle'
-endif
-
-" Individual settings ----------------- {{{2
+" Addon settings ----------------- {{{1
 let g:ctrlp_switch_buffer = 'et'
 let g:ctrlp_open_new_file = 't' " <c-y> opens file in new tab
 let g:ctrlp_arg_map = 1 " for <c-z> and <c-o>
 let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 let g:ctrlp_use_caching = 0
-let g:potion_command = "/Users/me/projects/potion/potion"
 
-" The bundles ------------------------ {{{2
-setglobal runtimepath+=~/.vim/bundle/vundle
-call vundle#rc()
-Bundle 'gmarik/vundle'
-Bundle 'demands/vim-potion'
-Bundle 'kien/ctrlp.vim'
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-vinegar'
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'Syntastic'
-Bundle 'tpope/vim-commentary'
-Bundle 'majutsushi/tagbar'
-Bundle 'tpope/vim-endwise'
-Bundle 'tpope/vim-eunuch'
-Bundle 'tpope/vim-markdown'
-Bundle 'vim-ruby/vim-ruby'
-Bundle 'sjl/vitality.vim'
-Bundle 'MarcWeber/vim-addon-mw-utils'
-Bundle 'tomtom/tlib_vim'
-Bundle 'ervandew/supertab'
-Bundle 'wikitopian/hardmode'
-Bundle 'kana/vim-textobj-user'
-Bundle 'nelstrom/vim-textobj-rubyblock'
-Bundle 'edsono/vim-matchit'
-Bundle 'demands/vim-coffee-script'
-Bundle 'wavded/vim-stylus'
-Bundle 'nathanaelkane/vim-indent-guides'
-Bundle 'groenewege/vim-less'
-Bundle 'tpope/vim-abolish'
-Bundle 'suan/vim-instant-markdown'
-Bundle 'benmills/vimux'
-Bundle 'moll/vim-node'
-Bundle 'digitaltoad/vim-jade'
+" Addons --------------------------------- {{{1
 
-" Exit the script if bundles not loaded {{{2
-for bundle in g:bundles
-  if !isdirectory(bundle.rtpath)
-    echo "Could not find bundle '" . bundle.name . "' at " . bundle.rtpath . "!"
-    echo "Install bundles with BundleInstall, then run vim again to get all the benefits of your custom .vimrc"
-    finish
+fun! EnsureVamIsOnDisk(plugin_root_dir)
+  let vam_autoload_dir = a:plugin_root_dir.'/vim-addon-manager/autoload'
+  if isdirectory(vam_autoload_dir)
+    return 1
+  else
+    if 1 == confirm("Clone VAM into ".a:plugin_root_dir."?","&Y\n&N")
+      call mkdir(a:plugin_root_dir, 'p')
+      execute '!git clone --depth=1 git://github.com/MarcWeber/vim-addon-manager '.
+                  \       shellescape(a:plugin_root_dir, 1).'/vim-addon-manager'
+      " VAM runs helptags automatically when you install or update 
+      " plugins
+      exec 'helptags '.fnameescape(a:plugin_root_dir.'/vim-addon-manager/doc')
+    endif
+    return isdirectory(vam_autoload_dir)
   endif
-endfor
+endfun
+
+fun! SetupVAM()
+  let c = get(g:, 'vim_addon_manager', {})
+  let g:vim_addon_manager = c
+  let c.plugin_root_dir = expand('$HOME/.vim/vim-addons', 1)
+  if !EnsureVamIsOnDisk(c.plugin_root_dir)
+    echohl ErrorMsg | echomsg "No VAM found!" | echohl NONE
+    return
+  endif
+  let &rtp.=(empty(&rtp)?'':',').c.plugin_root_dir.'/vim-addon-manager'
+
+  let addons = []
+  let addons += ['Solarized']                   " color scheme
+  let addons += ['ctrlp']                       " fuzzy file-finder
+  let addons += ['fugitive']                    " git utilities
+  let addons += ['Syntastic']                   " syntax checking on save, etc
+  let addons += ['commentary']                  " quickly turn line(s) into comments
+  let addons += ['vinegar']                     " <-> to netrc current directory
+  let addons += ['endwise']                     " automatically end do/end, if/else, etc structures in ruby, bash, etc
+  let addons += ['eunuch']                      " UNIX file utilities like Rename, Move, etc
+  let addons += ['github:sjl/vitality.vim']    " play nicely with iTerm2 / tmux
+  let addons += ['matchit.zip']                 " multi-char % matching
+  let addons += ['abolish']                     " change several variations of a word at a time
+  let addons += ['vimux']                       " send commands to other tmux windows
+
+  " filetypes
+  let addons += ['github:demands/vim-coffee-script']
+  let addons += ['github:wavded/vim-stylus']
+  let addons += ['github:groenewege/vim-less']
+  let addons += ['jade']
+  let addons += ['github:vim-ruby/vim-ruby']
+  let addons += ['Markdown_syntax']
+  let addons += ['github:moll/vim-node']
+
+  call vam#ActivateAddons(addons, {'auto_install' : 0})
+
+endfun
+call SetupVAM()
 
 " Basic settings ---------------------------- {{{1
 
@@ -247,15 +249,8 @@ let g:syntastic_mode_map = { 'mode': 'passive',
                             \ 'active_filetypes': ['ruby', 'php', 'coffee'],
                             \ 'passive_filetypes': ['html'] }
 
-" used when searching for a file with gf or [I
-setglobal suffixesadd=.js,.coffee,.json
-setglobal path=.,node_modules;~,,
-
-" hardmode by default -------- {{{2
-" augroup default_hardmode
-"   autocmd!
-"   autocmd VimEnter,BufNewFile,BufReadPost * silent! call HardMode()
-" augroup END
+" completion options
+setglobal complete=.,b,u,d,t
 
 " arrrgh -------- {{{2
 augroup arrgh
@@ -322,6 +317,9 @@ inoremap kj <Esc>
 " toggle paste mode
 setglobal pt=<C-q>
 
+" completion
+inoremap <Tab> <C-P>
+
 " Visual selection ----- {{{2
 " Make ,V in normal mode highlight the most recently pasted or edited text
 nnoremap ,V `[v`]
@@ -368,9 +366,6 @@ noremap <localleader>w :setlocal wrap!<CR>
 " show/hide invisibles ------------ {{{4
 noremap <localleader>i :setlocal list!<CR>
 
-" hard mode ------------------ {{{4
-noremap <localleader>h <Esc>:call HardMode()<CR>
-noremap <localleader>H <Esc>:call EasyMode()<CR>
 
 " toggling foldcolumn (\f) -------- {{{4
 nnoremap <localleader>vf :call <sid>FoldColumnToggle()<cr>
