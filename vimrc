@@ -75,10 +75,12 @@ fun! SetupVAM()
   let addons += ['vinegar']                     " <-> to netrc current directory
   let addons += ['endwise']                     " automatically end do/end, if/else, etc structures in ruby, bash, etc
   let addons += ['eunuch']                      " UNIX file utilities like Rename, Move, etc
-  let addons += ['github:sjl/vitality.vim']    " play nicely with iTerm2 / tmux
+  let addons += ['github:sjl/vitality.vim']     " play nicely with iTerm2 / tmux
   let addons += ['matchit.zip']                 " multi-char % matching
   let addons += ['abolish']                     " change several variations of a word at a time
   let addons += ['vimux']                       " send commands to other tmux windows
+  let addons += ['github:SirVer/ultisnips']     " text snippets
+  let addons += ['github:honza/vim-snippets']   " a snippet starter pack
 
   " filetypes
   let addons += ['github:demands/vim-coffee-script']
@@ -316,9 +318,6 @@ inoremap kj <Esc>
 
 " toggle paste mode
 setglobal pt=<C-q>
-
-" completion
-inoremap <Tab> <C-P>
 
 " Visual selection ----- {{{2
 " Make ,V in normal mode highlight the most recently pasted or edited text
