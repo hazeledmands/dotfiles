@@ -1,1 +1,1 @@
-EXCLUDES="*.md install.sh apps"
+EXCLUDES="*.md install.sh"
