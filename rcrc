@@ -1,1 +1,2 @@
 EXCLUDES="*.md install.sh"
+DOTFILES_DIRS="/Users/demands/.dotfiles /Users/me/.dotfiles /Users/demands/Dropbox/dotfiles /Users/me/Dropbox/dotfiles"
