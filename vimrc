@@ -34,7 +34,7 @@ endif
 let g:ctrlp_switch_buffer = 'et'
 let g:ctrlp_open_new_file = 't' " <c-y> opens file in new tab
 let g:ctrlp_arg_map = 1 " for <c-z> and <c-o>
-let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+let g:ctrlp_user_command = ['.git/', 'git ls-files -co -X .gitignore %s']
 let g:ctrlp_use_caching = 0
 
 " Addons --------------------------------- {{{1
