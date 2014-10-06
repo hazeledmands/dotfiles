@@ -564,8 +564,15 @@ augroup filetype_coffee
   autocmd FileType coffee nnoremap <buffer> <leader>c :CoffeeCompile<CR>
   autocmd FileType coffee vnoremap <buffer> <leader>c :CoffeeCompile<CR>
   autocmd FileType coffee setlocal foldlevel=99
+  autocmd FileType coffee map <buffer> <leader>l :VimuxRunCommand("coffee " . expand("%"))<CR>
 
   autocmd BufWritePre *.coffee :%s/\s\+$//e " remove all trailing whitespace
+augroup END
+
+" Kale ----------------- {{{2
+augroup kale
+  autocmd!
+  autocmd BufReadPre */Projects/kale/* map <buffer> <leader>L :VimuxRunCommand("coffee " . expand("%") . " --nobuild")<CR>
 augroup END
 
 " Markdown ------------ {{{2
