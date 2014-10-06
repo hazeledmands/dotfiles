@@ -36,6 +36,7 @@ let g:ctrlp_open_new_file = 't' " <c-y> opens file in new tab
 let g:ctrlp_arg_map = 1 " for <c-z> and <c-o>
 let g:ctrlp_user_command = ['.git/', 'git ls-files -co -X .gitignore %s']
 let g:ctrlp_use_caching = 0
+let NERDTreeMinimalUI=1
 
 " Addons --------------------------------- {{{1
 
@@ -81,6 +82,7 @@ fun! SetupVAM()
   let addons += ['vimux']                       " send commands to other tmux windows
   let addons += ['github:SirVer/ultisnips']     " text snippets
   let addons += ['github:honza/vim-snippets']   " a snippet starter pack
+  let addons += ['github:scrooloose/nerdtree']  " file / directory browsing tool
 
   " filetypes
   let addons += ['github:demands/vim-coffee-script']
@@ -535,6 +537,11 @@ map <Leader>vq :VimuxCloseRunner<CR>
 map <Leader>vs :VimuxInterruptRunner<CR>
 map <Leader>vc :VimuxClearRunnerHistory<CR>
 map <Leader>vz :VimuxZoomRunner<CR>
+
+" NERDTree bindings -------------- {{{2
+
+map <Leader>nf :NERDTreeFind<CR>
+map <Leader>nt :NERDTreeToggle<CR>
 
 " Filetype-specific settings -------------- {{{1
 " Vimscript --------------------- {{{2
