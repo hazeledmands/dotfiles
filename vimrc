@@ -226,6 +226,9 @@ setglobal cursorline
 highlight cursorline guibg=#333333
 highlight CursorColumn guibg=#333333
 
+" Italic comments (the ne://alexpearce.me/2014/05/italics-in-iterm2-vim-tmux/)
+highlight Comment cterm=italic
+
 " respect modeline in files
 setglobal modeline
 setglobal modelines=4
