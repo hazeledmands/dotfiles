@@ -90,7 +90,6 @@ fun! SetupVAM()
   let addons += ['github:groenewege/vim-less']
   let addons += ['jade']
   let addons += ['github:vim-ruby/vim-ruby']
-  let addons += ['Markdown_syntax']
   let addons += ['github:moll/vim-node']
 
   call vam#ActivateAddons(addons, {'auto_install' : 0})
@@ -569,9 +568,8 @@ augroup END
 " Markdown ------------ {{{2
 augroup markdown
   autocmd!
-  autocmd FileType mkd onoremap <buffer> ih :<c-u>execute "normal! ?^[=-]\\{2,}$\r:nohlsearch\rkvg_"<cr>
-  autocmd FileType mkd onoremap <buffer> ah :<c-u>execute "normal! ?^[=-]\\{2,}$\r:nohlsearch\rg_vk0"<cr>
-  autocmd FileType mkd setlocal foldlevel=1
+  autocmd BufRead,BufNewFile *.md set filetype=markdown
+  autocmd FileType markdown set textwidth=80
 augroup END
 
 
