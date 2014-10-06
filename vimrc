@@ -530,7 +530,7 @@ augroup vimrc_settings
   autocmd BufWritePost ~/.vimrc source ~/.vimrc
 augroup END
 
-" vmux bindings ------------- {{{2
+" vimux bindings ------------- {{{2
 
 map <Leader>vp :VimuxPromptCommand<CR>
 map <Leader>vl :VimuxRunLastCommand<CR>
