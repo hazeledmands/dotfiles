@@ -34,12 +34,19 @@ endif
 let g:ctrlp_switch_buffer = 'et'
 let g:ctrlp_open_new_file = 't' " <c-y> opens file in new tab
 let g:ctrlp_arg_map = 1 " for <c-z> and <c-o>
-let g:ctrlp_user_command = ['.git/', 'git ls-files -co -X .gitignore %s']
+let g:ctrlp_user_command = ['.git/', 'git ls-files -co --exclude-standard %s']
 let g:ctrlp_use_caching = 0
 let NERDTreeMinimalUI=1
+let g:UltiSnipsEditSplit = 'horizontal'
+let delimitMate_expand_cr=1
+let delimitMate_expand_space=1
+let g:vitality_fix_cursor=0
+let g:markdown_fenced_languages = ['coffee', 'css', 'erb=eruby', 'javascript', 'js=javascript', 'json=javascript', 'ruby', 'sass', 'xml', 'html']
+let g:scratch_filetype = 'markdown'
 
 " Addons --------------------------------- {{{1
 
+" Setup ------------------------------- {{{2
 fun! EnsureVamIsOnDisk(plugin_root_dir)
   let vam_autoload_dir = a:plugin_root_dir.'/vim-addon-manager/autoload'
   if isdirectory(vam_autoload_dir)
@@ -67,31 +74,46 @@ fun! SetupVAM()
   endif
   let &rtp.=(empty(&rtp)?'':',').c.plugin_root_dir.'/vim-addon-manager'
 
+" Functional addons ----------------------- {{{2
   let addons = []
-  let addons += ['Solarized']                   " color scheme
-  let addons += ['ctrlp']                       " fuzzy file-finder
-  let addons += ['fugitive']                    " git utilities
-  let addons += ['Syntastic']                   " syntax checking on save, etc
-  let addons += ['commentary']                  " quickly turn line(s) into comments
-  let addons += ['vinegar']                     " <-> to netrc current directory
-  let addons += ['endwise']                     " automatically end do/end, if/else, etc structures in ruby, bash, etc
-  let addons += ['eunuch']                      " UNIX file utilities like Rename, Move, etc
-  let addons += ['github:sjl/vitality.vim']     " play nicely with iTerm2 / tmux
-  let addons += ['matchit.zip']                 " multi-char % matching
-  let addons += ['abolish']                     " change several variations of a word at a time
-  let addons += ['vimux']                       " send commands to other tmux windows
-  let addons += ['github:SirVer/ultisnips']     " text snippets
-  let addons += ['github:honza/vim-snippets']   " a snippet starter pack
-  let addons += ['github:scrooloose/nerdtree']  " file / directory browsing tool
+  let addons += ['Solarized']                              " color scheme
+  let addons += ['ctrlp']                                  " fuzzy file-finder
+  let addons += ['fugitive']                               " git utilities
+  let addons += ['Syntastic']                              " syntax checking on save, etc
+  let addons += ['commentary']                             " quickly turn line(s) into comments
+  let addons += ['vinegar']                                " <-> to netrc current directory
+  let addons += ['endwise']                                " automatically end do/end, if/else, etc structures in ruby, bash, etc
+  let addons += ['eunuch']                                 " UNIX file utilities like Rename, Move, etc
+  let addons += ['github:sjl/vitality.vim']                " play nicely with iTerm2 / tmux
+  let addons += ['matchit.zip']                            " multi-char % matching
+  let addons += ['abolish']                                " change several variations of a word at a time
+  let addons += ['github:tpope/vim-repeat']                " work with other plugins to make actions repeatable
+  let addons += ['github:tpope/vim-speeddating']           " increment/decrement date strings with <C-a> and <C-x>
+  let addons += ['github:tpope/vim-surround']              " quickly surround text with things like quotes, braces, or xml tags
+  let addons += ['github:tpope/vim-unimpaired']            " standardized pairs of mappings
+  let addons += ['vimux']                                  " send commands to other tmux windows
+  let addons += ['github:SirVer/ultisnips']                " text snippets
+  let addons += ['github:honza/vim-snippets']              " a snippet starter pack
+  let addons += ['github:scrooloose/nerdtree']             " file / directory browsing tool
+  let addons += ['github:editorconfig/editorconfig-vim']   " standard format for editor config
+  let addons += ['github:haya14busa/incsearch.vim']        " better incremental search
+  let addons += ['github:osyo-manga/vim-anzu']             " search statistics
+  let addons += ['github:Raimondi/delimitMate']            " auto-close quotes, parens, braces, etc
+  let addons += ['github:Wolfy87/vim-enmasse']             " edit all quickfix files at the same time
+  let addons += ['github:mtth/scratch.vim']                " a quick 'scratch' buffer
+  let addons += ['github:junegunn/vim-peekaboo']           " see contents of registers as you use them
 
-  " filetypes
+" filetype addons ---------------- {{{2
   let addons += ['github:demands/vim-coffee-script']
   let addons += ['github:wavded/vim-stylus']
   let addons += ['github:groenewege/vim-less']
-  let addons += ['jade']
+  let addons += ['github:digitaltoad/vim-jade']
   let addons += ['github:vim-ruby/vim-ruby']
   let addons += ['github:moll/vim-node']
+  let addons += ['github:pangloss/vim-javascript']
+  let addons += ['github:rstacruz/sparkup']                " for fast HTML editing
 
+" addon setup continued --------- {{{2
   call vam#ActivateAddons(addons, {'auto_install' : 0})
 
 endfun
@@ -187,8 +209,6 @@ setglobal nostartofline
 " search stuff
 setglobal ignorecase " ignore case of searches
 setglobal smartcase " ... but don't ignore case if search has uppercase in it
-setglobal nohlsearch " don't highlight search results
-setglobal incsearch " highlight dynamically as pattern is typed
 
 " allow cursor beyond last character
 setglobal virtualedit=onemore
@@ -206,6 +226,10 @@ setglobal background=dark
 let g:solarized_termcolors = 256
 let g:solarized_termtrans = 1
 colorscheme solarized
+
+" Fold colors and underlines and stuff
+highlight Folded term=NONE cterm=NONE gui=NONE ctermbg=235 ctermfg=37
+set fillchars="fold:"
 
 " Highlight errors garishly
 highlight Error ctermbg=red ctermfg=white guibg=red guifg=white
@@ -304,8 +328,17 @@ endfunction
 let mapleader = "\<Space>"
 let maplocalleader = "\\"
 
-" Save as administrator ---- {{{2
-cmap w!! w !sudo tee > /dev/null %
+" incsearch (better incremental search plugin) --- {{{2
+nmap / <Plug>(incsearch-forward)
+nmap ? <Plug>(incsearch-backward)
+nmap g/ <Plug>(incsearch-stay)
+nmap n <Plug>(incsearch-nohl)<Plug>(anzu-n-with-echo)
+nmap N <Plug>(incsearch-nohl)<Plug>(anzu-N-with-echo)
+map *  <Plug>(incsearch-nohl)<Plug>(anzu-star-with-echo)
+map #  <Plug>(incsearch-nohl)<Plug>(anzu-sharp-with-echo)
+map g* <Plug>(incsearch-nohl-g*)
+map g# <Plug>(incsearch-nohl-g#)
+
 
 " System clipboard ---- {{{2
 
@@ -381,8 +414,6 @@ function! s:FoldColumnToggle()
 endfunction
 
 " global settings ------------------ {{{3
-" highlight search ----------------- {{{4
-noremap <leader>h :set hlsearch!<CR>
 
 " toggling quickfix (\q) -------- {{{4
 nnoremap <leader>q :call <sid>QuickFixToggle()<cr>
@@ -468,13 +499,6 @@ noremap g= <C-w>=
 nnoremap <C-h> gT
 nnoremap <C-l> gt
 
-" keys to move between arglist ---- {{{3
-nnoremap gn :next<CR>
-nnoremap gp :previous<CR>
-nnoremap gN :last<CR>
-nnoremap gP :first<CR>
-
-
 " keys to close windows and tabs ---- {{{3
 noremap <leader>w :close<CR>
 noremap <leader>W :only<CR>
@@ -499,8 +523,8 @@ noremap <Leader>gg :Gstatus<CR>
 noremap <Leader>gc :Gcommit<CR>
 noremap <Leader>gb :Gblame<CR>
 noremap <Leader>gd :Gsdiff<CR>
-noremap <Leader>gp :call VimuxRunCommand("git pull --rebase")<CR>
-noremap <Leader>gP :call VimuxRunCommand("git push")<CR>
+noremap <Leader>gp :call VimuxRunCommand("pushd " . expand("%:p:h") . "; git pull --rebase; popd")<CR>
+noremap <Leader>gP :call VimuxRunCommand("pushd " . expand("%:p:h") . "; git push; popd")<CR>
 
 " Edit .vimrc (this file) -------------------- {{{2
 nnoremap <leader>vv :split ~/.vimrc<CR>
@@ -509,7 +533,7 @@ augroup vimrc_settings
 
   function! s:loadvimrc()
 
-    function! b:commitvimrc()
+    function! CommitVimrc()
       execute 'silent !git commit -am"'.escape(input("Commit message? "), '\!"').'"'
       redraw!
       echom "Push? (Y/n) "
@@ -522,13 +546,16 @@ augroup vimrc_settings
     setlocal nowrap
     setlocal nonu
     lchdir ~/Dropbox/dotfiles
-    nnoremap <buffer> <leader>gg :call b:commitvimrc()<CR>
+    nnoremap <buffer> <leader>gg :call CommitVimrc()<CR>
 
   endfunction
 
   autocmd BufRead ~/.vimrc call s:loadvimrc()
   autocmd BufWritePost ~/.vimrc source ~/.vimrc
 augroup END
+
+" Edit ultisnips
+nnoremap <leader>se :UltiSnipsEdit<CR>
 
 " vimux bindings ------------- {{{2
 
@@ -572,7 +599,14 @@ augroup END
 " Kale ----------------- {{{2
 augroup kale
   autocmd!
+
   autocmd BufReadPre */Projects/kale/* map <buffer> <leader>L :VimuxRunCommand("coffee " . expand("%") . " --nobuild")<CR>
+  autocmd BufReadPre */Projects/kale/* map <buffer> <leader>; :VimuxRunCommand("CI=true SELENIUM_ACCESSKEY=HwAD4zR5sspnDi4WGcpM SELENIUM_CAPABILITIES_browserstack_debug=true SELENIUM_CAPABILITIES_build='Maxs Local Dev Machine' SELENIUM_CAPABILITIES_project='Kale' SELENIUM_PROVIDER=browserstack SELENIUM_TUNNEL=true SELENIUM_USERNAME=goodeggs coffee " . expand("%") . " --nobuild")<CR>
+augroup END
+
+augroup kaletest
+  autocmd!
+  autocmd BufRead,BufNewFile */test/*.coffee,*.test.coffee,*.spec.coffee,spec.coffee,test.coffee,unit.coffee,e2e.coffee set ft=coffee.coffeetest
 augroup END
 
 " Markdown ------------ {{{2
@@ -582,4 +616,8 @@ augroup markdown
   autocmd FileType markdown set textwidth=80
 augroup END
 
-
+augroup focus
+  autocmd!
+  autocmd FocusGained * echom "FocusGained"
+  autocmd FocusLost * echom "FocusLost"
+augroup END
