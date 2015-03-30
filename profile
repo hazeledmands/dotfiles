@@ -6,6 +6,9 @@ alias q="exit"
 alias git="hub"
 alias tmux="tmux -2"
 
+# liquid prompt (only load in interactive shells)
+[[ $- = *i*  ]] && source ~/Projects/liquidprompt/liquidprompt
+
 # bash completion for all installed homebrew binaries
 if [ -f $BREW_PREFIX/etc/bash_completion ]; then
   source $BREW_PREFIX/etc/bash_completion
