@@ -1,5 +1,5 @@
 [user]
-	email = me@maxedmands.com
+	email = git@maxedmands.com
 	name = Max Edmands
 [core]
 	excludesfile = /Users/me/.gitignore_global
