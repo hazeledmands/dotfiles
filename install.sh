@@ -8,9 +8,9 @@ if [ -d $HOME/Projects/dotfiles ] && ! [ -L $HOME/.dotfiles ]; then
   ln -s $HOME/Projects/dotfiles $HOME/.dotfiles
 fi
 
-source ./hooks/pre-up
+source $HOME/.dotfiles/hooks/pre-up
 
 echo "Setting up osx defaults..."
-source ./hooks/osx_defaults
+source $HOME/.dotfiles/hooks/osx_defaults
 
 RCRC=$HOME/.dotfiles/rcrc rcup
