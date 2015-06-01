@@ -39,15 +39,14 @@ if ! [ -d "$HOME/.init/solarized" ]; then
   unzip $HOME/.init/solarized.zip -d $HOME/.init
   rm $HOME/.init/solarized.zip
 fi
-
 if ! [ -e "$HOME/.init/antigen.zsh" ]; then
   curl -L https://raw.githubusercontent.com/zsh-users/antigen/master/antigen.zsh > $HOME/.init/antigen.zsh
 fi
 
 # default shell
-bash_location=/usr/local/bin/bash
-if ! grep -q $bash_location /etc/shells; then
-  echo "Setting $bash_location as default shell..."
-  echo $bash_location | sudo tee -a /etc/shells > /dev/null
-  chsh -s $bash_location
+zsh_location=/usr/local/bin/zsh
+if ! grep -q $zsh_location /etc/shells; then
+  echo "Setting $zsh_location as default shell..."
+  echo $zsh_location | sudo tee -a /etc/shells > /dev/null
+  chsh -s $zsh_location
 fi

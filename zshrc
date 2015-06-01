@@ -1,4 +1,4 @@
-source ~/.antigen/antigen.zsh
+source ~/.init/antigen.zsh
 antigen bundle nojhan/liquidprompt
 antigen bundle nvm
 
