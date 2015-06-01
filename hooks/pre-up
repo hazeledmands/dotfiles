@@ -4,31 +4,47 @@ brew_prefix=$(brew --prefix)
 dotfiles=$HOME/.dotfiles/
 readonly brew_prefix dotfiles
 
+# pull down recent changes to dotfiles repository from github
 pushd $dotfiles >/dev/null
 echo "Updating dotfiles..."
 git pull
 popd >/dev/null
 
+# download brew taps (collections of homebrew packages)
 for tap in $(cat $dotfiles/hooks/taps); do
   brew tap $tap 2>/dev/null
 done
 
+# download all packages from /hooks/packages
 for pkg in $(cat $dotfiles/hooks/packages); do
   if ! [ -d "$brew_prefix/opt/$pkg" ]; then
     brew install $pkg 2>/dev/null
   fi
 done
 
+# download all casks (GUI apps) from /hooks/casks
 for cask in $(cat $dotfiles/hooks/casks); do
   if ! [ -d "/opt/homebrew-cask/Caskroom/$cask/" ]; then
     brew cask install $cask
   fi
 done
-brew cask alfred link 2>/dev/null
 
 echo "Updating brew packages and casks..."
 brew update
 
+# packages that aren't part of package managers (they go in ~/.init)
+mkdir -p $HOME/.init
+if ! [ -d "$HOME/.init/solarized" ]; then
+  curl http://ethanschoonover.com/solarized/files/solarized.zip -o $HOME/.init/solarized.zip
+  unzip $HOME/.init/solarized.zip -d $HOME/.init
+  rm $HOME/.init/solarized.zip
+fi
+
+if ! [ -e "$HOME/.init/antigen.zsh" ]; then
+  curl -L https://raw.githubusercontent.com/zsh-users/antigen/master/antigen.zsh > $HOME/.init/antigen.zsh
+fi
+
+# default shell
 bash_location=/usr/local/bin/bash
 if ! grep -q $bash_location /etc/shells; then
   echo "Setting $bash_location as default shell..."
