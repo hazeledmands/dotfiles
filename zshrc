@@ -2,24 +2,15 @@
 #   https://github.com/zsh-users/antigen
 source ~/.init/antigen.zsh
 antigen bundles <<EOBUNDLES
-  # really awesome command line prompt
   nojhan/liquidprompt
-
-  # zsh syntax highlighting
+  zsh-users/zsh-completions
   zsh-users/zsh-syntax-highlighting
-
-  # nvm completion
+  zsh-users/zsh-history-substring-search
   nvm
-
-  # brew completion
   brew
   brew-cask
-
-  # git completion
   gitfast
   github
-
-  # heroku completion
   heroku
 EOBUNDLES
 antigen apply
@@ -27,6 +18,25 @@ antigen apply
 # NVM
 export NVM_DIR=~/.nvm
 source $(brew --prefix nvm)/nvm.sh
+
+# zsh history substring search
+# bind UP and DOWN arrow keys
+zmodload zsh/terminfo
+bindkey "$terminfo[kcuu1]" history-substring-search-up
+bindkey "$terminfo[kcud1]" history-substring-search-down
+
+# bind UP and DOWN arrow keys (compatibility fallback
+# for Ubuntu 12.04, Fedora 21, and MacOSX 10.9 users)
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+
+# bind P and N for EMACS mode
+bindkey -M emacs '^P' history-substring-search-up
+bindkey -M emacs '^N' history-substring-search-down
+
+# bind k and j for VI mode
+bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd 'j' history-substring-search-down
 
 alias q="exit"
 alias git="hub"
