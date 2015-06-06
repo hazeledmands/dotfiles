@@ -62,3 +62,4 @@ fi
 export NVM_DIR=$HOME/.nvm
 source $(brew --prefix nvm)/nvm.sh
 nvm install v0.12.4
+nvm alias default v0.12.4
