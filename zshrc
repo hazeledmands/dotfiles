@@ -10,6 +10,17 @@ antigen bundles <<EOBUNDLES
 
   # nvm completion
   nvm
+
+  # brew completion
+  brew
+  brew-cask
+
+  # git completion
+  gitfast
+  github
+
+  # heroku completion
+  heroku
 EOBUNDLES
 antigen apply
 
