@@ -33,6 +33,7 @@ echo "Updating brew packages and casks..."
 brew update
 
 # packages that aren't part of package managers (they go in ~/.init)
+echo "Setting up special packages..."
 mkdir -p $HOME/.init
 if ! [ -d "$HOME/.init/solarized" ]; then
   curl http://ethanschoonover.com/solarized/files/solarized.zip -o $HOME/.init/solarized.zip
@@ -44,9 +45,20 @@ if ! [ -e "$HOME/.init/antigen.zsh" ]; then
 fi
 
 # default shell
+echo "setting default shell..."
 zsh_location=/usr/local/bin/zsh
 if ! grep -q $zsh_location /etc/shells; then
   echo "Setting $zsh_location as default shell..."
   echo $zsh_location | sudo tee -a /etc/shells > /dev/null
   chsh -s $zsh_location
 fi
+
+# nvm
+echo "configuring NVM..."
+if [[ ! -s $HOME/.nvm/nvm-exec ]]; then
+  mkdir -p $HOME/.nvm
+  cp "$(brew --prefix nvm)/nvm-exec" $HOME/.nvm/
+fi
+export NVM_DIR=$HOME/.nvm
+source $(brew --prefix nvm)/nvm.sh
+nvm install v0.12.4

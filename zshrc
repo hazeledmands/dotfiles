@@ -1,6 +1,21 @@
+### ANTIGEN: zsh plugin manager
+#   https://github.com/zsh-users/antigen
 source ~/.init/antigen.zsh
-antigen bundle nojhan/liquidprompt
-antigen bundle nvm
+antigen bundles <<EOBUNDLES
+  # really awesome command line prompt
+  nojhan/liquidprompt
+
+  # zsh syntax highlighting
+  zsh-users/zsh-syntax-highlighting
+
+  # nvm completion
+  nvm
+EOBUNDLES
+antigen apply
+
+# NVM
+export NVM_DIR=~/.nvm
+source $(brew --prefix nvm)/nvm.sh
 
 alias q="exit"
 alias git="hub"
