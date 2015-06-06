@@ -12,6 +12,10 @@ antigen bundles <<EOBUNDLES
   gitfast
   github
   heroku
+  demands/mx --loc=bin
+
+  # text objects
+  hchbaw/opp.zsh
 EOBUNDLES
 antigen apply
 
