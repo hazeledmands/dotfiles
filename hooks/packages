@@ -4,6 +4,7 @@ battery
 brew-cask
 git
 gitsh
+gpg
 heroku-toolbelt
 hub
 irssi
