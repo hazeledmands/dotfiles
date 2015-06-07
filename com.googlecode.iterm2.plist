@@ -476,7 +476,7 @@
 	<key>HideMenuBarInFullscreen</key>
 	<true/>
 	<key>HideScrollbar</key>
-	<false/>
+	<true/>
 	<key>HideTab</key>
 	<true/>
 	<key>HighlightTabLabels</key>
@@ -530,10 +530,14 @@
 	<array/>
 	<key>NSTableView Sort Ordering KeyBingingTable</key>
 	<array/>
+	<key>NSWindow Frame NSFontPanel</key>
+	<string>720 37 720 706 0 0 1440 877 </string>
 	<key>NSWindow Frame Preferences</key>
-	<string>516 292 924 485 0 0 1440 877 </string>
+	<string>115 102 924 485 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
 	<string>723 18 717 859 0 0 1440 877 </string>
+	<key>NSWindow Frame iTerm Window 1</key>
+	<string>114 178 570 376 0 0 1440 877 </string>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -711,9 +715,9 @@
 			<key>Blinking Cursor</key>
 			<false/>
 			<key>Blur</key>
-			<false/>
+			<true/>
 			<key>Blur Radius</key>
-			<real>2</real>
+			<real>4.4686388969421387</real>
 			<key>Bold Color</key>
 			<dict>
 				<key>Blue Component</key>
@@ -1087,7 +1091,7 @@
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>Monaco 12</string>
+			<string>Menlo-Regular 13</string>
 			<key>Option Key Sends</key>
 			<integer>2</integer>
 			<key>Prompt Before Closing 2</key>
@@ -1237,9 +1241,9 @@
 			<key>Tags</key>
 			<array/>
 			<key>Terminal Type</key>
-			<string>xterm-256color</string>
+			<string>xterm-256color-italic</string>
 			<key>Transparency</key>
-			<real>0.0</real>
+			<real>0.053254436701536179</real>
 			<key>Triggers</key>
 			<array/>
 			<key>Unlimited Scrollback</key>
