@@ -1,0 +1,43 @@
+snippet r "require statement"
+${2:`!p
+import re
+import posixpath
+def camelize(string, uppercase_first_letter=True):
+	if uppercase_first_letter:
+		string = re.sub(r"(?:^|[_-])(.)", lambda m: m.group(1).upper(), string)
+		return re.sub(r"[^\w]", '', string)
+	else:
+		return string[0].lower() + camelize(string)[1:]
+snip.rv = camelize(posixpath.splitext(posixpath.basename(t[1]))[0], False)
+`} = require '${1:module}'
+endsnippet
+
+snippet rc "require statement; class"
+${2:`!p
+import re
+import posixpath
+def camelize(string, uppercase_first_letter=True):
+	if uppercase_first_letter:
+		string = re.sub(r"(?:^|[_-])(.)", lambda m: m.group(1).upper(), string)
+		return re.sub(r"[^\w]", '', string)
+	else:
+		return string[0].lower() + camelize(string)[1:]
+snip.rv = camelize(posixpath.splitext(posixpath.basename(t[1]))[0])
+`} = require '${1:module}'
+endsnippet
+
+snippet ro "require statement; object"
+{${2:Foo}} = require '${1:module}'
+endsnippet
+
+snippet > "anonymous function" i
+${1:(${2:arg}) }-> ${3:contents}
+endsnippet
+
+snippet log "console.log statement for debugging"
+console.log ${1:"${2:something of interest}"}
+endsnippet
+
+snippet dir "console.dir statement for debugging"
+console.dir ${1:foo}
+endsnippet

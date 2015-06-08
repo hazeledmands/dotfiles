@@ -38,6 +38,7 @@ let g:ctrlp_user_command = ['.git/', 'git ls-files -co --exclude-standard %s']
 let g:ctrlp_use_caching = 0
 let NERDTreeMinimalUI=1
 let g:UltiSnipsEditSplit = 'horizontal'
+let g:UltiSnipsSnippetDirectories=[$HOME.'/.snippets']
 let delimitMate_expand_cr=1
 let delimitMate_expand_space=1
 let g:vitality_fix_cursor=0

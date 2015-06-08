@@ -1,0 +1,111 @@
+snippet d "mocha description"
+describe '${1:the world}', ->
+	${2:# tests go here}
+endsnippet
+
+snippet g "mocha given block"
+given '${1:the world}', ->
+	${2:# tests go here}
+endsnippet
+
+snippet i "mocha it block"
+it '${1:does a thing}', ->
+	${2:# test goes here}
+endsnippet
+
+snippet if "mocha it block w/ fibrous"
+it '${1:does a thing}', fibrous ->
+	${2:# test goes here}
+endsnippet
+
+snippet ia "mocha async it block"
+it '${1:does a thing}', (done) ->
+	${2:# test goes here}
+	done()
+endsnippet
+
+snippet b "mocha before block"
+before ->
+	${1:# do some stuff}
+endsnippet
+
+snippet bf "mocha before block w/ fibrous"
+before fibrous ->
+	${1:@databases.sync.reset()}
+endsnippet
+
+snippet ba "mocha asynchronous before block"
+before (done) ->
+	${1:# do some stuff}
+	done()
+endsnippet
+
+snippet be "mocha beforeEach block"
+beforeEach ->
+	${1:# do some stuff}
+endsnippet
+
+snippet bef "mocha beforeEach block w/fibrous"
+beforeEach fibrous ->
+	${1:@databases.sync.reset()}
+endsnippet
+
+snippet bea "mocha async beforeEach block"
+beforeEach (done) ->
+	${1:# do some stuff}
+	done()
+endsnippet
+
+snippet bei "mocha beforeEach block w/angular inject"
+beforeEach inject (${1:dependency}) ->
+	${2:$1}
+endsnippet
+
+
+snippet a "mocha after block"
+after ->
+	${1:# do some stuff}
+endsnippet
+
+snippet af "mocha after block w/fibrous"
+after fibrous ->
+	${1:@databases.sync.reset()}
+endsnippet
+
+snippet aa "mocha async after block"
+after (done) ->
+	${1:# do some stuff}
+	done()
+endsnippet
+
+snippet ae "mocha afterEach block"
+afterEach ->
+	${1:# do some stuff}
+endsnippet
+
+snippet aef "mocha afterEach block w/fibrous"
+afterEach fibrous ->
+	${1:@databases.sync.reset()}
+endsnippet
+
+snippet aea "mocha async afterEach block"
+afterEach (done) ->
+	${1:# do some stuff}
+	done()
+endsnippet
+
+snippet e "chai expectation"
+expect(${1:foo}).${2:to.equal ${3:bar}}
+endsnippet
+
+snippet edp "chai expect object to have deep property"
+expect(${1:foo}).to.have.deep.property '${2:bar}'${3:, ${4:baz}}
+endsnippet
+
+snippet mf "mongoose factory"
+mongooseFactory('${1:Order}').sync.create${2:()}
+endsnippet
+
+snippet wg "webdriver.get"
+webdriver.get "${1:/#/hub/${2:${3:sfbay}/${4:2013-11-11}/${5:receiving}/${6:frozengoodies}/}}"
+endsnippet

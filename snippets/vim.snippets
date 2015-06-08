@@ -1,0 +1,7 @@
+snippet au "set up an autogroup" 
+augroup ${1:groupname}
+  autocmd!
+	autocmd ${2:BufRead,BufNewFile} ${3:*.ext,*.ext2} ${4:cmd}
+augroup END
+endsnippet
+
