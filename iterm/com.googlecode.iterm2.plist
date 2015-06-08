@@ -504,7 +504,7 @@
 	<key>MaxVertically</key>
 	<false/>
 	<key>NSNavLastRootDirectory</key>
-	<string>~/Projects/dotfiles</string>
+	<string>~/Projects/dotfiles/iterm</string>
 	<key>NSNavPanelExpandedSizeForOpenMode</key>
 	<string>{712, 448}</string>
 	<key>NSQuotedKeystrokeBinding</key>
@@ -514,7 +514,15 @@
 	<key>NSScrollAnimationEnabled</key>
 	<false/>
 	<key>NSWindow Frame Preferences</key>
-	<string>607 735 924 485 0 0 2560 1417 </string>
+	<string>245 757 924 485 0 0 2560 1417 </string>
+	<key>NSWindow Frame SUStatusFrame</key>
+	<string>2128 1193 384 129 0 0 2560 1417 </string>
+	<key>NSWindow Frame iTerm Window 0</key>
+	<string>1282 14 1278 1403 0 0 2560 1417 </string>
+	<key>NSWindow Frame iTerm Window 1</key>
+	<string>1282 966 585 451 0 0 2560 1417 </string>
+	<key>NSWindow Frame iTerm Window 2</key>
+	<string>0 14 1278 1403 0 0 2560 1417 </string>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -692,9 +700,9 @@
 			<key>Blinking Cursor</key>
 			<false/>
 			<key>Blur</key>
-			<false/>
+			<true/>
 			<key>Blur Radius</key>
-			<real>2</real>
+			<real>5.5159506797790527</real>
 			<key>Bold Color</key>
 			<dict>
 				<key>Blue Component</key>
@@ -1068,7 +1076,7 @@
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>Monaco 12</string>
+			<string>Menlo-Regular 12</string>
 			<key>Option Key Sends</key>
 			<integer>2</integer>
 			<key>Prompt Before Closing 2</key>
@@ -1218,9 +1226,9 @@
 			<key>Tags</key>
 			<array/>
 			<key>Terminal Type</key>
-			<string>xterm-256color</string>
+			<string>xterm-256color-italic</string>
 			<key>Transparency</key>
-			<real>0.0</real>
+			<real>0.091406248509883881</real>
 			<key>Triggers</key>
 			<array/>
 			<key>Unlimited Scrollback</key>
@@ -1243,6 +1251,10 @@
 			<string>/Users/demands</string>
 		</dict>
 	</array>
+	<key>NoSyncTimeOfLastPromo</key>
+	<real>453348880.99290001</real>
+	<key>NoSyncTimeOfLastPromoDownload</key>
+	<real>455485727.95173299</real>
 	<key>OnlyWhenMoreTabs</key>
 	<true/>
 	<key>OpenArrangementAtStartup</key>
@@ -1289,7 +1301,7 @@
 		</dict>
 	</dict>
 	<key>PrefsCustomFolder</key>
-	<string>/Users/demands/Projects/dotfiles/iterm</string>
+	<string>~/Projects/dotfiles/iterm</string>
 	<key>PromptOnQuit</key>
 	<false/>
 	<key>QuitWhenAllWindowsClosed</key>
@@ -1305,7 +1317,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2015-05-31T22:49:28Z</date>
+	<date>2015-06-08T19:48:35Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>ShowBookmarkName</key>
@@ -1347,6 +1359,6 @@
 	<key>WordCharacters</key>
 	<string>/-+\~_.</string>
 	<key>iTerm Version</key>
-	<string>2.0</string>
+	<string>2.1.1</string>
 </dict>
 </plist>
