@@ -545,7 +545,7 @@ augroup vimrc_settings
 
     setlocal nowrap
     setlocal nonu
-    lchdir ~/Dropbox/dotfiles
+    lchdir ~/Projects/dotfiles
     nnoremap <buffer> <leader>gg :call CommitVimrc()<CR>
 
   endfunction
