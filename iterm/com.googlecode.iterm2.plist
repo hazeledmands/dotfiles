@@ -514,13 +514,13 @@
 	<key>NSScrollAnimationEnabled</key>
 	<false/>
 	<key>NSWindow Frame Preferences</key>
-	<string>245 757 924 485 0 0 2560 1417 </string>
+	<string>532 689 924 485 0 0 2560 1417 </string>
 	<key>NSWindow Frame SUStatusFrame</key>
 	<string>2128 1193 384 129 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
 	<string>1282 14 1278 1403 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>1282 966 585 451 0 0 2560 1417 </string>
+	<string>0 1041 585 376 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
 	<string>0 14 1278 1403 0 0 2560 1417 </string>
 	<key>New Bookmarks</key>
@@ -1066,7 +1066,7 @@
 			<key>Log Directory</key>
 			<string></string>
 			<key>Minimum Contrast</key>
-			<real>0.0</real>
+			<real>0.18122395873069763</real>
 			<key>Mouse Reporting</key>
 			<true/>
 			<key>Name</key>
@@ -1317,7 +1317,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2015-06-08T19:48:35Z</date>
+	<date>2015-06-09T20:41:48Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>ShowBookmarkName</key>
