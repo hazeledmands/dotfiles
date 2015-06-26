@@ -52,7 +52,11 @@ if [ -f ~/.sekret ]; then
 fi
 
 export PROJECTS="$HOME/Projects" # where all of my real work lives
+export BREW_PREFIX=`brew --prefix`
 export HOMEBREW_CASK_OPTS="--appdir=/Applications" # link my cask apps to ~/Applications
-export EDITOR="/usr/local/bin/vim" # for maximum compatibility
+export EDITOR="$BREW_PREFIX/bin/vim" # for maximum compatibility
+export GOPATH="$PROJECTS/gocode"
 export PATH="$BREW_PREFIX/bin:$BREW_PREFIX/sbin:$PATH" # support homebrew binaries
+export PATH="$BREW_PREFIX/opt/sbin/rabbitmq:$PATH" # support rabbitmq binaries
+export PATH="$PATH:/usr/local/opt/go/libexec/bin:/$GOPATH/bin" # support go binaries
 export MANPATH="$BREW_PREFIX/share/man:/usr/share/man:/opt/X11/share/man:$MANPATH"
