@@ -50,6 +50,16 @@ alias q="exit"
 alias git="hub"
 alias tmux="tmux -2"
 
+# history options
+export HISTSIZE=1000 # in memory
+export SAVEHIST=10000 # in $HISTFILE
+export HISTFILE=~/.zsh_history
+setopt INC_APPEND_HISTORY # append to history after every command
+setopt HIST_IGNORE_DUPS # don't append the same line to history twice in a row
+setopt HIST_REDUCE_BLANKS # clean up history
+setopt HIST_IGNORE_SPACE # don't add to history if line starts with a space
+
+
 # don't want this stuff in version control (this is probably a security red flag):
 if [ -f ~/.sekret ]; then
   source ~/.sekret
