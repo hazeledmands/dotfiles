@@ -13,11 +13,15 @@ antigen bundles <<EOBUNDLES
   github
   heroku
   demands/mx --loc=bin
+  matschaffer/oh-my-zsh-custom --loc=mouse.zsh
 
   # text objects
   hchbaw/opp.zsh
 EOBUNDLES
 antigen apply
+
+# mouse support
+zle-toggle-mouse
 
 # NVM
 export NVM_DIR=~/.nvm
