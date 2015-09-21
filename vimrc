@@ -114,6 +114,7 @@ fun! SetupVAM()
   let addons += ['github:moll/vim-node']
   let addons += ['github:pangloss/vim-javascript']
   let addons += ['github:rstacruz/sparkup']                " for fast HTML editing
+  let addons += ['github:elzr/vim-json']
 
 " addon setup continued --------- {{{2
   call vam#ActivateAddons(addons, {'auto_install' : 0})
