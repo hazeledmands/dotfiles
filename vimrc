@@ -225,13 +225,13 @@ syntax on " highlighting please
 
 " Syntax coloring
 setglobal t_Co=256
-setglobal background=dark
+setglobal background=light
 let g:solarized_termcolors = 256
 let g:solarized_termtrans = 1
 colorscheme solarized
 
 " Fold colors and underlines and stuff
-highlight Folded term=NONE cterm=NONE gui=NONE ctermbg=235 ctermfg=37
+highlight Folded term=NONE cterm=NONE gui=NONE ctermbg=77 ctermfg=235
 set fillchars="fold:"
 
 " Highlight errors garishly
